@@ -12,7 +12,7 @@ def home():
 
 @app.route("/PGC/")
 def pgc():
-     return render_template("index.html")
+     return render_template("DescripcionProyecto.html")
 
 @app.route("/Cluster/")
 def cluster():
