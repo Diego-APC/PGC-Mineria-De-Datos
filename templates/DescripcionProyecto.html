@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detección temprana de deserción estudiantil</title>
+</head>
+<body>
+
+  <header>
+    <h1>Detección temprana de deserción estudiantil mediante minería de datos y simulación multi-agente</h1>
+    <p>Proyecto de Minería de Datos</p>
+    <ul>
+      <li>Diego Alexander Pinzón Camargo</li>
+      <li>Julián Santiago Gutiérrez Rodríguez</li>
+      <li>Andres Felipe Segura Suarez</li>
+    </ul>
+  </header>
+
+  <main>
+
+    <section id="introduccion">
+      <h2>Introducción</h2>
+      <p>
+        La deserción escolar es uno de los fenómenos más complejos y costosos que enfrentan las instituciones educativas a nivel global.
+        No se trata de un evento aislado, sino del resultado acumulado de múltiples presiones que actúan simultáneamente sobre el estudiante:
+        estrés académico, dificultades financieras, falta de sueño, ausencia de redes de apoyo social y deterioro progresivo de la salud mental.
+      </p>
+      <p>
+        En muchos casos, las señales de alerta aparecen meses antes de que un estudiante abandone formalmente sus estudios,
+        pero permanecen invisibles porque no existe un sistema capaz de detectarlas de forma integrada y anticipada.
+        Este proyecto propone construir ese sistema: un pipeline de minería de datos que identifica los factores más determinantes
+        del riesgo de abandono, descubre perfiles de estudiantes vulnerables y, como etapa final, utiliza simulación multi-agente
+        con inteligencia artificial para proyectar escenarios futuros y explorar posibles intervenciones.
+      </p>
+      <p>
+        El trabajo se apoya en el <strong>Student Mental Health and Burnout Dataset</strong>, un conjunto de datos sintético a gran escala
+        con un millón de registros y veinte variables que capturan dimensiones académicas, psicológicas, conductuales y socioeconómicas
+        del perfil estudiantil. La naturaleza sintética del dataset garantiza que las relaciones estadísticas entre variables sean
+        realistas y reproducibles, sin comprometer la privacidad de ninguna persona real.
+      </p>
+    </section>
+
+    <section id="objetivos">
+      <h2>Objetivos</h2>
+
+      <h3>Objetivo general</h3>
+      <p>
+        Desarrollar un modelo predictivo de riesgo de deserción estudiantil aplicando técnicas de minería de datos sobre variables
+        académicas, psicológicas y de estilo de vida, e integrar los resultados como insumo para una simulación multi-agente
+        que permita explorar escenarios de intervención temprana.
+      </p>
+
+      <h3>Objetivos específicos</h3>
+      <ol>
+        <li>
+          Realizar un análisis exploratorio de datos (EDA) que permita comprender la distribución, correlaciones y valores atípicos
+          del dataset, con énfasis en la variable <code>dropout_risk</code> y sus relaciones con factores de estrés, sueño y apoyo social.
+        </li>
+        <li>
+          Aplicar técnicas de clustering (K-Means) para segmentar a los estudiantes en perfiles naturales de riesgo,
+          identificando arquetipos como "el estudiante sobrecargado", "el estudiante con presión financiera" o
+          "el estudiante socialmente aislado".
+        </li>
+        <li>
+          Construir modelos de clasificación (Árbol de Decisión, Random Forest, XGBoost) para predecir el nivel de riesgo
+          de abandono escolar a partir de las variables disponibles, y comparar su desempeño mediante métricas estándar.
+        </li>
+        <li>
+          Aplicar regresión para cuantificar el impacto de variables individuales sobre el valor continuo de <code>dropout_risk</code>,
+          identificando cuáles tienen mayor poder predictivo.
+        </li>
+        <li>
+          Extraer reglas de asociación que revelen combinaciones críticas de factores asociados al alto riesgo de abandono
+          (por ejemplo: bajo apoyo social + alto estrés financiero + pocas horas de sueño → riesgo elevado).
+        </li>
+        <li>
+          Integrar los perfiles y hallazgos obtenidos como materiales semilla en MiroFish para simular escenarios futuros
+          mediante agentes con comportamientos basados en los arquetipos descubiertos, y generar informes predictivos
+          sobre el impacto de posibles intervenciones institucionales.
+        </li>
+      </ol>
+    </section>
+
+    <section id="dataset">
+      <h2>Dataset</h2>
+
+      <h3>Ficha técnica</h3>
+      <table>
+        <tr>
+          <th>Nombre</th>
+          <td>Student Mental Health and Burnout Dataset</td>
+        </tr>
+        <tr>
+          <th>Fuente</th>
+          <td>Kaggle — sharmajicoder</td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td><a href="https://www.kaggle.com/datasets/sharmajicoder/student-mental-health-and-burnout" target="_blank">kaggle.com/datasets/sharmajicoder/student-mental-health-and-burnout</a></td>
+        </tr>
+        <tr>
+          <th>Registros</th>
+          <td>1,000,000</td>
+        </tr>
+        <tr>
+          <th>Variables</th>
+          <td>20</td>
+        </tr>
+        <tr>
+          <th>Formato</th>
+          <td>CSV (294.24 MB)</td>
+        </tr>
+        <tr>
+          <th>Tipo</th>
+          <td>Sintético, estadísticamente realista</td>
+        </tr>
+        <tr>
+          <th>Licencia</th>
+          <td>MIT</td>
+        </tr>
+      </table>
+
+      <h3>Variables del dataset</h3>
+
+      <h4>Demográficas</h4>
+      <ul>
+        <li><code>age</code> — Edad del estudiante (17 a 29 años)</li>
+        <li><code>gender</code> — Género (Male, Female, Other)</li>
+        <li><code>academic_year</code> — Año de carrera (1 a 4)</li>
+      </ul>
+
+      <h4>Factores académicos</h4>
+      <ul>
+        <li><code>study_hours_per_day</code> — Horas de estudio diarias</li>
+        <li><code>exam_pressure</code> — Nivel de presión por exámenes (1 a 10)</li>
+        <li><code>academic_performance</code> — Puntaje de rendimiento académico (0 a 100)</li>
+      </ul>
+
+      <h4>Indicadores de salud mental</h4>
+      <ul>
+        <li><code>stress_level</code> — Nivel de estrés general (0 a 10)</li>
+        <li><code>anxiety_score</code> — Intensidad de ansiedad (0 a 10)</li>
+        <li><code>depression_score</code> — Nivel de depresión (0 a 10)</li>
+      </ul>
+
+      <h4>Factores de estilo de vida</h4>
+      <ul>
+        <li><code>sleep_hours</code> — Horas de sueño promedio</li>
+        <li><code>physical_activity</code> — Horas de actividad física semanal</li>
+        <li><code>social_support</code> — Nivel de apoyo social y emocional (0 a 10)</li>
+      </ul>
+
+      <h4>Factores conductuales</h4>
+      <ul>
+        <li><code>screen_time</code> — Horas de uso de pantallas al día</li>
+        <li><code>internet_usage</code> — Horas de uso de internet al día</li>
+      </ul>
+
+      <h4>Factores ambientales</h4>
+      <ul>
+        <li><code>financial_stress</code> — Presión financiera (0 a 10)</li>
+        <li><code>family_expectation</code> — Expectativas familiares (0 a 10)</li>
+      </ul>
+
+      <h4>Variables derivadas y objetivo</h4>
+      <ul>
+        <li><code>burnout_score</code> — Índice compuesto de agotamiento (0 a 10)</li>
+        <li><code>mental_health_index</code> — Puntuación de bienestar mental (0 a 10, mayor es mejor)</li>
+        <li><code>risk_level</code> — Categoría de riesgo de burnout (Low, Medium, High)</li>
+        <li><code>dropout_risk</code> — <strong>Variable objetivo</strong>: probabilidad predicha de abandono escolar (0 a 10)</li>
+      </ul>
+
+      <h3>Justificación de la elección</h3>
+      <p>
+        Este dataset fue seleccionado porque cubre simultáneamente todas las dimensiones que la literatura identifica como
+        predictoras de la deserción: presión académica, salud mental, estilo de vida y factores socioeconómicos.
+        Su escala de un millón de registros permite aplicar técnicas de minería de datos con resultados estadísticamente
+        robustos, y la existencia explícita de la variable <code>dropout_risk</code> facilita tanto tareas supervisadas
+        (clasificación y regresión) como no supervisadas (clustering y reglas de asociación).
+        Adicionalmente, al ser sintético, su uso es completamente libre de restricciones éticas o de privacidad.
+      </p>
+    </section>
+
+    <section id="fases">
+      <h2>Fases del proyecto</h2>
+
+      <article id="fase-1">
+        <h3>Fase 1 — Comprensión y preparación de los datos</h3>
+        <p>
+          Carga del dataset en Python con Pandas. Inspección inicial: tipos de datos, valores nulos, estadísticas descriptivas
+          y distribuciones. Análisis exploratorio de datos (EDA) con visualizaciones de correlaciones, distribuciones por
+          variable y relaciones entre los factores de riesgo y la variable objetivo <code>dropout_risk</code>.
+          Preprocesamiento: normalización de variables numéricas, codificación de variables categóricas y selección del
+          subconjunto de variables más relevantes mediante análisis de importancia.
+        </p>
+      </article>
+
+      <article id="fase-2">
+        <h3>Fase 2 — Segmentación de perfiles (Clustering)</h3>
+        <p>
+          Aplicación del algoritmo K-Means para descubrir grupos naturales de estudiantes según sus características
+          combinadas. Determinación del número óptimo de clusters mediante el método del codo y el coeficiente de silueta.
+          Interpretación y nombramiento de cada cluster como un arquetipo de estudiante (por ejemplo: estudiante con
+          sobrecarga académica, estudiante con vulnerabilidad socioeconómica, estudiante con aislamiento social).
+          Estos arquetipos serán los insumos principales para la etapa de simulación con MiroFish.
+        </p>
+      </article>
+
+      <article id="fase-3">
+        <h3>Fase 3 — Modelos de clasificación y regresión</h3>
+        <p>
+          Construcción de modelos supervisados para predecir el riesgo de abandono. Para clasificación se discretizará
+          <code>dropout_risk</code> en categorías (bajo, medio, alto) y se entrenarán modelos de Árbol de Decisión,
+          Random Forest y XGBoost, comparando su desempeño con métricas de precisión, recall, F1-score y AUC-ROC.
+          Para regresión se trabajará con el valor continuo de <code>dropout_risk</code> utilizando regresión lineal
+          múltiple y Random Forest regressor, evaluados con RMSE y R². En ambos casos se aplicará validación cruzada
+          y se analizará la importancia de características.
+        </p>
+      </article>
+
+      <article id="fase-4">
+        <h3>Fase 4 — Extracción de reglas de asociación</h3>
+        <p>
+          Aplicación del algoritmo Apriori sobre versiones discretizadas de las variables para descubrir combinaciones
+          frecuentes de factores asociados al alto riesgo de abandono. Evaluación de las reglas resultantes mediante
+          métricas de soporte, confianza y lift. El objetivo es obtener patrones interpretables del tipo:
+          "si el estudiante tiene alto estrés financiero, baja actividad física y menos de 6 horas de sueño,
+          entonces el riesgo de abandono es alto" con alta confianza.
+        </p>
+      </article>
+
+      <article id="fase-5">
+        <h3>Fase 5 — Simulación multi-agente con MiroFish</h3>
+        <p>
+          Integración de los resultados obtenidos en las fases anteriores como materiales semilla para MiroFish.
+          Cada arquetipo de estudiante descubierto en el clustering se convierte en un tipo de agente con personalidad,
+          memoria y comportamiento propios dentro del mundo digital. Se definen escenarios de simulación como:
+          ¿qué ocurre con el riesgo de deserción si se implementa un programa de apoyo psicológico?
+          ¿cómo cambia el comportamiento del sistema si se reduce la presión financiera sobre los estudiantes?
+          MiroFish ejecuta las simulaciones y genera informes predictivos que complementan y enriquecen
+          los hallazgos cuantitativos de la minería de datos clásica.
+        </p>
+      </article>
+
+    </section>
+
+    <section id="herramientas">
+      <h2>Herramientas</h2>
+
+      <h3>Minería de datos y análisis</h3>
+      <ul>
+        <li><strong>Python 3.x</strong> — Lenguaje principal del proyecto</li>
+        <li><strong>Pandas</strong> — Manipulación y exploración de datos</li>
+        <li><strong>NumPy</strong> — Operaciones numéricas</li>
+        <li><strong>Scikit-learn</strong> — Modelos de clasificación, regresión y clustering</li>
+        <li><strong>XGBoost</strong> — Modelo de clasificación por gradient boosting</li>
+        <li><strong>MLxtend</strong> — Algoritmo Apriori para reglas de asociación</li>
+        <li><strong>Matplotlib / Seaborn</strong> — Visualización de datos</li>
+        <li><strong>Jupyter Notebook</strong> — Entorno de desarrollo interactivo</li>
+      </ul>
+
+      <h3>Simulación multi-agente</h3>
+      <ul>
+        <li><strong>MiroFish</strong> — Motor de predicción basado en simulación multi-agente con IA</li>
+        <li><strong>Zep Cloud</strong> — Memoria y grafos de conocimiento para los agentes (plan gratuito)</li>
+        <li><strong>Zeabur AI Hub</strong> — Proveedor LLM compatible con OpenAI API (plan gratuito)</li>
+      </ul>
+
+      <h3>Bitácora y presentación</h3>
+      <ul>
+        <li><strong>Flask</strong> — Framework web para la bitácora del proyecto</li>
+        <li><strong>Git / GitHub</strong> — Control de versiones y colaboración en equipo</li>
+      </ul>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Proyecto desarrollado para la materia de Minería de Datos</p>
+  </footer>
+
+</body>
+</html>
