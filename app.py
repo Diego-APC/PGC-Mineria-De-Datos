@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/")
 
 def home():
-     return "hello World"
+     return pgc()
 
 @app.route("/PGC/")
 def pgc():
