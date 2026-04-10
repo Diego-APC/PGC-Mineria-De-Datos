@@ -1,16 +1,31 @@
 /* Variables globales */
 :root {
-    --primary-color: #3a3a3a;
-    --secondary-color: #6c757d;
-    --accent-color: #dc3545;
-    --success-color: #28a745;
-    --warning-color: #fd7e14;
-    --dark-bg: #212529;
-    --light-bg: #f8f9fa;
-    --text-dark: #343a40;
-    --text-light: #6c757d;
+    --primary-color: #2A9D8F;      
+    --secondary-color: #3D5A80;    
+    --accent-color: #E76F51;       
+    --success-color: #2A9D8F;      
+    --warning-color: #E9C46A;      
+    
+    /* Fondos y superficies */
+    --dark-bg: #293241;
+    --light-bg: #F4F9F9;           
+    --card-bg: #FFFFFF;            
+    --border-color: #E2E8F0;       
+    --code-bg: #EDF2F7;            
+    
+    /* Textos */
+    --text-dark: #2D3E50;          
+    --text-light: #5C6B7A;         
+    
+    /* Gradientes para fondos generales y header */
+    --body-gradient-start: #E6F7F5;
+    --body-gradient-end: #C8E8E1;
+    --header-gradient-start: #2A9D8F;
+    --header-gradient-end: #3D5A80;
+    
+    /* Efectos */
     --border-radius: 8px;
-    --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -23,7 +38,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
+    background: linear-gradient(135deg, var(--body-gradient-start) 0%, var(--body-gradient-end) 100%);
     padding: 20px;
 }
 
@@ -31,7 +46,7 @@ body {
 body > * {
     max-width: 1200px;
     margin: 0 auto;
-    background: #ffffff;
+    background: var(--card-bg);
     padding: 30px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -43,7 +58,7 @@ header, main, footer {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #4a4a4a, #6c757d);
+    background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
     color: white;
     text-align: center;
     padding: 40px;
@@ -73,7 +88,7 @@ header ul {
 }
 
 header li {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.95em;
@@ -83,31 +98,31 @@ header li {
 section {
     margin-bottom: 40px;
     padding: 20px;
-    background: #ffffff;
+    background: var(--card-bg);
     border-radius: var(--border-radius);
 }
 
 section h2 {
-    color: #3a3a3a;
-    border-bottom: 3px solid #6c757d;
+    color: var(--text-dark);
+    border-bottom: 3px solid var(--secondary-color);
     padding-bottom: 10px;
     margin-bottom: 20px;
     font-size: 1.8em;
 }
 
 section h3 {
-    color: #6c757d;
+    color: var(--secondary-color);
     margin-top: 20px;
     margin-bottom: 15px;
     font-size: 1.4em;
 }
 
 section h4 {
-    color: #495057;
+    color: var(--text-dark);
     margin-top: 15px;
     margin-bottom: 10px;
     font-size: 1.2em;
-    border-left: 4px solid #6c757d;
+    border-left: 4px solid var(--secondary-color);
     padding-left: 12px;
 }
 
@@ -128,12 +143,12 @@ li {
 }
 
 code {
-    background: #e9ecef;
+    background: var(--code-bg);
     padding: 2px 6px;
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
-    color: #dc3545;
+    color: var(--accent-color);
 }
 
 /* Tablas */
@@ -141,7 +156,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    background: #ffffff;
+    background: var(--card-bg);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--box-shadow);
@@ -150,50 +165,50 @@ table {
 th, td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid var(--border-color);
 }
 
 th {
-    background: #4a4a4a;
+    background: var(--primary-color);
     color: white;
     font-weight: 600;
 }
 
 tr:hover {
-    background: #f8f9fa;
+    background: var(--light-bg);
 }
 
 /* Enlaces */
 a {
-    color: #6c757d;
+    color: var(--secondary-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #dc3545;
+    color: var(--accent-color);
     text-decoration: underline;
 }
 
 /* Artículos */
 article {
-    background: #f8f9fa;
+    background: var(--light-bg);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: var(--border-radius);
-    border-left: 4px solid #6c757d;
+    border-left: 4px solid var(--secondary-color);
 }
 
 article h3 {
     margin-top: 0;
-    color: #3a3a3a;
+    color: var(--text-dark);
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: #4a4a4a;
+    background: var(--primary-color);
     color: white;
     border-radius: var(--border-radius);
     margin-top: 30px;
@@ -204,24 +219,24 @@ footer {
     body {
         padding: 10px;
     }
-    
+
     header h1 {
         font-size: 1.5em;
     }
-    
+
     header ul {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     section, article {
         padding: 15px;
     }
-    
+
     table {
         font-size: 0.85em;
     }
-    
+
     th, td {
         padding: 8px;
     }
@@ -229,29 +244,29 @@ footer {
 
 /* Sección objetivos */
 #objetivos {
-    background: #ffffff;
-    border: 1px solid #e9ecef;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
 }
 
 /* Estilo para IDs específicos */
 #introduccion {
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
 }
 
 #dataset {
-    background: #ffffff;
-    border: 1px solid #e9ecef;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
 }
 
 #fases {
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
 }
 
 #herramientas {
-    background: #f5f5f5;
-    border: 1px solid #dee2e6;
+    background: var(--light-bg);
+    border: 1px solid var(--border-color);
 }
 
 /* Botones flotantes para navegación */
@@ -265,7 +280,7 @@ footer {
 }
 
 .nav-btn {
-    background: #4a4a4a;
+    background: var(--primary-color);
     color: white;
     width: 40px;
     height: 40px;
@@ -279,7 +294,7 @@ footer {
 }
 
 .nav-btn:hover {
-    background: #6c757d;
+    background: var(--secondary-color);
     transform: scale(1.1);
 }
 
@@ -296,7 +311,7 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     padding: 5px 10px;
-    background: #4a4a4a;
+    background: var(--primary-color);
     color: white;
     font-size: 12px;
     border-radius: 4px;
