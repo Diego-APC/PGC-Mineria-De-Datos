@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detección temprana de deserción estudiantil</title>
+  <title>Análisis de la deserción estudiantil</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
 
   <header>
-    <h1>Detección temprana de deserción estudiantil mediante minería de datos y simulación multi-agente</h1>
+    <h1>Análisis de la deserción estudiantil a partir de datos simulados mediante técnicas de minería de datos y simulación multiagente.</h1>
     <p>Proyecto de Minería de Datos</p>
     <ul>
       <li>Diego Alexander Pinzón Camargo</li>
@@ -28,11 +28,11 @@
         estrés académico, dificultades financieras, falta de sueño, ausencia de redes de apoyo social y deterioro progresivo de la salud mental.
       </p>
       <p>
-        En muchos casos, las señales de alerta aparecen meses antes de que un estudiante abandone formalmente sus estudios,
-        pero permanecen invisibles porque no existe un sistema capaz de detectarlas de forma integrada y anticipada.
-        Este proyecto propone construir ese sistema: un pipeline de minería de datos que identifica los factores más determinantes
-        del riesgo de abandono, descubre perfiles de estudiantes vulnerables y, como etapa final, utiliza simulación multi-agente
-        con inteligencia artificial para proyectar escenarios futuros y explorar posibles intervenciones.
+        En muchos casos, las señales de riesgo de deserción aparecen con antelación, pero permanecen ocultas por la falta de mecanismos capaces de 
+        integrarlas y anticiparlas. Este proyecto busca llenar ese vacío mediante un enfoque de minería de datos que permita identificar patrones y 
+        factores críticos asociados al abandono escolar. A partir de estos hallazgos, se construyen perfiles de estudiantes vulnerables y se emplea 
+        simulación multiagente para modelar dinámicas sociales y conductuales, proyectar escenarios futuros y evaluar posibles estrategias de intervención 
+        que reduzcan la probabilidad de deserción.
       </p>
       <p>
         El trabajo se apoya en el <strong>Student Mental Health and Burnout Dataset</strong>, un conjunto de datos sintético a gran escala
@@ -47,38 +47,35 @@
 
       <h3>Objetivo general</h3>
       <p>
-        Desarrollar un modelo predictivo de riesgo de deserción estudiantil aplicando técnicas de minería de datos sobre variables
-        académicas, psicológicas y de estilo de vida, e integrar los resultados como insumo para una simulación multi-agente
-        que permita explorar escenarios de intervención temprana.
+        Realizar un estudio de la deserción estudiantil como un fenómeno multivariable mediante técnicas de minería de datos, con el fin de identificar patrones,
+        perfiles de riesgo y relaciones significativas entre factores académicos, psicológicos y socioeconómicos, generando conocimiento útil
+        para la comprensión y abordaje del abandono escolar
       </p>
 
       <h3>Objetivos específicos</h3>
       <ol>
         <li>
-          Realizar un análisis exploratorio de datos (EDA) que permita comprender la distribución, correlaciones y valores atípicos
-          del dataset, con énfasis en la variable <code>dropout_risk</code> y sus relaciones con factores de estrés, sueño y apoyo social.
+          Explorar y comprender la estructura del dataset a través de un análisis exploratorio de datos, identificando distribuciones,
+          correlaciones y posibles anomalías en las variables relacionadas con el riesgo de deserción.
         </li>
         <li>
-          Aplicar técnicas de clustering (K-Means) para segmentar a los estudiantes en perfiles naturales de riesgo,
-          identificando arquetipos como "el estudiante sobrecargado", "el estudiante con presión financiera" o
-          "el estudiante socialmente aislado".
+          Identificar patrones y segmentar la población estudiantil en perfiles de comportamiento mediante técnicas de agrupamiento,
+          permitiendo caracterizar distintos niveles y tipos de riesgo de abandono.
         </li>
         <li>
-          Construir modelos de clasificación (Árbol de Decisión, Random Forest, XGBoost) para predecir el nivel de riesgo
-          de abandono escolar a partir de las variables disponibles, y comparar su desempeño mediante métricas estándar.
+          Determinar los factores más influyentes en el riesgo de deserción, evaluando la relación entre variables académicas,
+          de salud mental, estilo de vida y condiciones socioeconómicas.
         </li>
         <li>
-          Aplicar regresión para cuantificar el impacto de variables individuales sobre el valor continuo de <code>dropout_risk</code>,
-          identificando cuáles tienen mayor poder predictivo.
+          Descubrir relaciones significativas entre variables mediante el análisis de asociaciones, con el propósito de identificar
+          combinaciones de factores que incrementan la probabilidad de abandono estudiantil.
         </li>
         <li>
-          Extraer reglas de asociación que revelen combinaciones críticas de factores asociados al alto riesgo de abandono
-          (por ejemplo: bajo apoyo social + alto estrés financiero + pocas horas de sueño → riesgo elevado).
-        </li>
-        <li>
-          Integrar los perfiles y hallazgos obtenidos como materiales semilla en MiroFish para simular escenarios futuros
-          mediante agentes con comportamientos basados en los arquetipos descubiertos, y generar informes predictivos
-          sobre el impacto de posibles intervenciones institucionales.
+          Integrar los hallazgos obtenidos para construir una visión global del fenómeno, que 
+          sirva como base para una simulación multiagente orientada a proyectar distintos escenarios. 
+          Los agentes se diseñarán con comportamientos inspirados en los arquetipos descubiertos, lo 
+          que permitirá generar simulaciones fundamentadas en los hallazgos y, a partir de ellas, 
+          describir la dinámica de la deserción estudiantil en diferentes contextos.
         </li>
       </ol>
     </section>
@@ -174,12 +171,9 @@
 
       <h3>Justificación de la elección</h3>
       <p>
-        Este dataset fue seleccionado porque cubre simultáneamente todas las dimensiones que la literatura identifica como
-        predictoras de la deserción: presión académica, salud mental, estilo de vida y factores socioeconómicos.
-        Su escala de un millón de registros permite aplicar técnicas de minería de datos con resultados estadísticamente
-        robustos, y la existencia explícita de la variable <code>dropout_risk</code> facilita tanto tareas supervisadas
-        (clasificación y regresión) como no supervisadas (clustering y reglas de asociación).
-        Adicionalmente, al ser sintético, su uso es completamente libre de restricciones éticas o de privacidad.
+        Este dataset fue seleccionado por su capacidad de representar de manera integral los múltiples factores asociados a la deserción estudiantil,
+        incluyendo dimensiones académicas, psicológicas, conductuales y socioeconómicas. Esta diversidad de variables permite abordar el fenómeno
+        desde una perspectiva multivariable, coherente con su naturaleza compleja.
       </p>
     </section>
 
@@ -189,58 +183,48 @@
       <article id="fase-1">
         <h3>Fase 1 — Comprensión y preparación de los datos</h3>
         <p>
-          Carga del dataset en Python con Pandas. Inspección inicial: tipos de datos, valores nulos, estadísticas descriptivas
-          y distribuciones. Análisis exploratorio de datos (EDA) con visualizaciones de correlaciones, distribuciones por
-          variable y relaciones entre los factores de riesgo y la variable objetivo <code>dropout_risk</code>.
-          Preprocesamiento: normalización de variables numéricas, codificación de variables categóricas y selección del
-          subconjunto de variables más relevantes mediante análisis de importancia.
+          En esta fase se realiza la exploración inicial del dataset con el objetivo de comprender su estructura,
+          las características de sus variables y la calidad de la información disponible. Se analizan tipos de datos,
+          posibles valores faltantes, distribuciones estadísticas y relaciones preliminares entre variables.
+          A partir de este análisis exploratorio se identifican tendencias generales, correlaciones relevantes y
+          posibles anomalías. Posteriormente se realiza el proceso de preparación de los datos, incluyendo la
+          normalización de variables numéricas, la codificación de variables categóricas y la selección de
+          atributos relevantes para las etapas posteriores del análisis.
         </p>
       </article>
 
       <article id="fase-2">
-        <h3>Fase 2 — Segmentación de perfiles (Clustering)</h3>
+        <h3>Fase 2 — Identificación de perfiles estudiantiles</h3>
         <p>
-          Aplicación del algoritmo K-Means para descubrir grupos naturales de estudiantes según sus características
-          combinadas. Determinación del número óptimo de clusters mediante el método del codo y el coeficiente de silueta.
-          Interpretación y nombramiento de cada cluster como un arquetipo de estudiante (por ejemplo: estudiante con
-          sobrecarga académica, estudiante con vulnerabilidad socioeconómica, estudiante con aislamiento social).
-          Estos arquetipos serán los insumos principales para la etapa de simulación con MiroFish.
+          En esta etapa se busca identificar patrones de comportamiento dentro de la población estudiantil mediante
+          técnicas de agrupamiento. El objetivo es descubrir segmentos naturales de estudiantes que compartan
+          características similares en términos de desempeño académico, condiciones de vida y estado de salud mental.
+          Estos grupos permiten construir perfiles o arquetipos de estudiantes, facilitando la interpretación del
+          fenómeno de la deserción desde una perspectiva estructural y comparativa.
         </p>
       </article>
 
       <article id="fase-3">
-        <h3>Fase 3 — Modelos de clasificación y regresión</h3>
+        <h3>Fase 3 — Descubrimiento de relaciones entre factores de riesgo</h3>
         <p>
-          Construcción de modelos supervisados para predecir el riesgo de abandono. Para clasificación se discretizará
-          <code>dropout_risk</code> en categorías (bajo, medio, alto) y se entrenarán modelos de Árbol de Decisión,
-          Random Forest y XGBoost, comparando su desempeño con métricas de precisión, recall, F1-score y AUC-ROC.
-          Para regresión se trabajará con el valor continuo de <code>dropout_risk</code> utilizando regresión lineal
-          múltiple y Random Forest regressor, evaluados con RMSE y R². En ambos casos se aplicará validación cruzada
-          y se analizará la importancia de características.
+          En esta etapa se analizan las relaciones entre distintas variables del dataset con el fin de identificar
+          combinaciones de factores que aparecen con mayor frecuencia en situaciones de alto riesgo de deserción.
+          El objetivo es descubrir patrones interpretables que revelen cómo interactúan variables como el estrés
+          académico, la presión financiera, el apoyo social o los hábitos de sueño. Este análisis contribuye a
+          comprender la naturaleza multifactorial del fenómeno y a identificar condiciones que incrementan la
+          probabilidad de abandono.
         </p>
       </article>
 
       <article id="fase-4">
-        <h3>Fase 4 — Extracción de reglas de asociación</h3>
+        <h3>Fase 4 — Simulación multi-agente con MiroFish</h3>
         <p>
-          Aplicación del algoritmo Apriori sobre versiones discretizadas de las variables para descubrir combinaciones
-          frecuentes de factores asociados al alto riesgo de abandono. Evaluación de las reglas resultantes mediante
-          métricas de soporte, confianza y lift. El objetivo es obtener patrones interpretables del tipo:
-          "si el estudiante tiene alto estrés financiero, baja actividad física y menos de 6 horas de sueño,
-          entonces el riesgo de abandono es alto" con alta confianza.
-        </p>
-      </article>
-
-      <article id="fase-5">
-        <h3>Fase 5 — Simulación multi-agente con MiroFish</h3>
-        <p>
-          Integración de los resultados obtenidos en las fases anteriores como materiales semilla para MiroFish.
-          Cada arquetipo de estudiante descubierto en el clustering se convierte en un tipo de agente con personalidad,
-          memoria y comportamiento propios dentro del mundo digital. Se definen escenarios de simulación como:
-          ¿qué ocurre con el riesgo de deserción si se implementa un programa de apoyo psicológico?
-          ¿cómo cambia el comportamiento del sistema si se reduce la presión financiera sobre los estudiantes?
-          MiroFish ejecuta las simulaciones y genera informes predictivos que complementan y enriquecen
-          los hallazgos cuantitativos de la minería de datos clásica.
+          En la fase final se integran los resultados obtenidos a lo largo del análisis para construir una comprensión global
+          del fenómeno de la deserción estudiantil. Los patrones identificados, los perfiles de estudiantes y las relaciones
+          entre variables permiten elaborar conclusiones fundamentadas sobre las principales dinámicas que influyen en el
+          abandono escolar. A partir de esta interpretación, se plantean posibles escenarios de análisis que pueden ser
+          explorados mediante simulación multiagente con MiroFish, utilizando los hallazgos como base conceptual para representar el
+          comportamiento del sistema.
         </p>
       </article>
 
