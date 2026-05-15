@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Bienestar Animal en Bogotá</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+  <header>
+    <h1>Dashboard de Bienestar Animal</h1>
+    <p>Visualización interactiva del estado de las mascotas en Bogotá</p>
+    <ul>
+      <li>Power BI Embedded</li>
+      <li>Análisis de tenencia responsable</li>
+      <li>Indicadores de salud pública</li>
+    </ul>
+  </header>
+
+  <main>
+    <!-- Botón para volver al proyecto principal -->
+    <a href="/PGC/" class="nav-back">← Volver al proyecto</a>
+
+    <section id="dashboard">
+      <h2>Dashboard</h2>
+      <p>
+        Se presenta el dashboard desarrollado en Power BI que permite explorar de manera interactiva 
+        los principales indicadores de bienestar animal en la ciudad de Bogotá. El dashboard incluye métricas sobre 
+        distribución geográfica de mascotas, cobertura de servicios veterinarios, casos de zoonosis y otros 
+        indicadores.
+      </p>
+      
+      <div class="dashboard-container">
+        <div class="iframe-wrapper">
+          <iframe 
+            title="DashboardBienestarAnimal" 
+            width="600" 
+            height="373.5" 
+            src="https://app.powerbi.com/view?r=eyJrIjoiNGE1MTZmZGMtZTFiZC00MGRlLTg0Y2MtOGNiMzU2MDRjNDEyIiwidCI6IjA3ZGE2N2EwLTFmNDMtNGU4Yy05NzdmLTVmODhiNjQ3MGVlNiIsImMiOjR9" 
+            frameborder="0" 
+            allowFullScreen="true">
+        </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="hallazgos">
+      <h2>Análisis de Hallazgos</h2>
+      <p>
+        A partir del análisis de los datos presentados en el dashboard, se han identificado los siguientes hallazgos 
+        fundamentales que permiten comprender la situación actual del bienestar animal en Bogotá y orientar 
+        estrategias de intervención priorizadas:
+      </p>
+
+      <div class="hallazgos-grid">
+        
+        <div class="hallazgo-card">
+          <span class="badge">Hallazgo 1</span>
+          <h3>Alta concentración de mascotas en localidades del sur y occidente</h3>
+          <p>
+            Ciudad Bolívar registra la mayor cantidad de mascotas con 
+            26.910, seguida muy de cerca por Usme con 23.408,, 
+            Bosa con 22.619 y Kennedy con 22.528. Esto indica que más del 
+            40% de la población animal del distrito se concentra en apenas cuatro localidades 
+            del sur y suroccidente, lo que sugiere la necesidad de focalizar recursos veterinarios, campañas 
+            de vacunación y brigadas de esterilización en estos territorios.
+          </p>
+        </div>
+
+        <div class="hallazgo-card">
+          <span class="badge">Hallazgo 2</span>
+          <h3>Predominio de caninos en el norte y de felinos en el suroriente</h3>
+          <p>
+            En localidades como Sumapaz, Teusaquillo y Chapinero, los caninos representan entre 
+            el 63% y el 73% de las mascotas, mientras que en San Cristóbal, Rafael Uribe 
+            y Usme la proporción de felinos se acerca al 50%, llegando incluso a superar 
+            ligeramente a los caninos. Esto evidencia dos perfiles de tenencia diferentes: en zonas urbanas del 
+            norte predominan los perros, mientras que en el suroriente hay una convivencia más equilibrada o 
+            mayor preferencia por gatos.
+          </p>
+        </div>
+
+        <div class="hallazgo-card">
+          <span class="badge">Hallazgo 3</span>
+          <h3>Alta proporción de hembras con riesgo de reproducción no controlada</h3>
+          <p>
+            Sumapaz con 61,9%, Ciudad Bolívar con 60,8%, 
+            San Cristóbal con 59,9% y Bosa con 58,5% presentan los porcentajes 
+            más altos de hembras. En estas localidades, más de la mitad de la población animal está en 
+            capacidad de reproducirse, lo que representa un alto riesgo de crecimiento poblacional no planificado 
+            y de abandono de camadas. Se requiere priorizar jornadas masivas de esterilización en estos territorios.
+          </p>
+        </div>
+
+        <div class="hallazgo-card">
+          <span class="badge">Hallazgo 4</span>
+          <h3>Animales peligrosos se concentran en localidades del centro-oriente</h3>
+          <p>
+            San Cristóbal con 5,3%, Santa Fé con 5,0%, 
+            Ciudad Bolívar con 4,9% y Usme con 4,8% tienen los mayores porcentajes 
+            de mascotas clasificadas como potencialmente peligrosas. Aunque los valores parecen bajos en términos 
+            relativos, no deja de significar que cientos de animales que requieren medidas especiales de 
+            manejo, como registro, bozal en espacio público y tenencia responsable reforzada.
+          </p>
+        </div>
+
+        <div class="hallazgo-card">
+          <span class="badge">Hallazgo 5</span>
+          <h3>Brecha en identificación por especie y tamaño</h3>
+          <p>
+            El uso de microchip es desigual entre especies y tamaños de animales. Los datos permiten observar 
+            que no todas las especies ni todos los tamaños tienen el mismo nivel de identificación, lo que 
+            dificulta el trazado de animales perdidos, abandonados o involucrados en incidentes. Esta brecha 
+            limita la capacidad de respuesta del sistema de bienestar animal.
+          </p>
+        </div>
+
+        <div class="hallazgo-card">
+          <span class="badge">Hallazgo 6</span>
+          <h3>Relación inversa entre cobertura vacunal y casos de zoonosis</h3>
+          <p>
+            Al comparar el promedio de cobertura de vacuna por localidad con la suma de casos de zoonosis, se 
+            observa que aquellas localidades con menor cobertura tienden a reportar más casos de enfermedades 
+            transmitidas por animales. Esto es especialmente crítico en localidades del sur, donde la carga de 
+            zoonosis es más alta y la vacunación no alcanza niveles óptimos.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="recomendaciones">
+      <h2>Estrategias que se deberian tomar</h2>
+      
+      <article>
+        <h3>Priorización territorial</h3>
+        <p>
+          Concentrar las intervenciones de bienestar animal como son las esterilizaciones, vacunación y registro, en las 
+          localidades de Ciudad Bolívar, Usme, Bosa y Kennedy, que concentran más del 40% de 
+          la población animal y presentan los indicadores más críticos en términos de riesgo reproductivo y 
+          zoonosis.
+        </p>
+      </article>
+
+      <article>
+        <h3>Estrategias diferenciadas por especie</h3>
+        <p>
+          Desarrollar campañas específicas para la tenencia de felinos en localidades del suroriente, donde 
+          su presencia es mayor, incluyendo información sobre manejo, esterilización temprana y prevención 
+          de enfermedades específicas de gatos.
+        </p>
+      </article>
+
+      <article>
+        <h3>Fortalecimiento del sistema de identificación</h3>
+        <p>
+          Implementar jornadas masivas y gratuitas de microchip, priorizando especies y tamaños con menor 
+          cobertura actual, y establecer un sistema de registro unificado que permita el trazado efectivo 
+          de animales perdidos o abandonados.
+        </p>
+      </article>
+
+    </section>
+
+  </main>
+  <footer>
+    <p>Dashboard desarrollado con Power BI - Datos oficiales de bienestar animal en Bogotá</p>
+    <p><small>Fuente: Secretaría Distrital de Salud - Instituto de Protección y Bienestar Animal</small></p>
+  </footer>
+
+</body>
+</html>
