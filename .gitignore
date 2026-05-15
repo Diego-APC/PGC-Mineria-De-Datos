@@ -86,4 +86,5 @@ data/
 *.parquet
 .claude/
 __pycache__/
+ModeloEstrella/
 
