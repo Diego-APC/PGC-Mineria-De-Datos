@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienestar Animal en Cundinamarca</title>
+  <title>Bienestar Animal en Bogotá D.C.</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
 
   <header>
-    <h1>Estudio del bienestar animal en Cundinamarca mediante técnicas de minería de datos.</h1>
+    <h1>Estudio del bienestar animal en Bogotá D.C. mediante técnicas de minería de datos.</h1>
     <p>Proyecto de Minería de Datos</p>
     <ul>
       <li>Diego Alexander Pinzón Camargo</li>
@@ -23,23 +23,22 @@
     <section id="introduccion">
       <h2>Introducción</h2>
       <p>
-        El bienestar animal es un campo de estudio que evalúa las condiciones físicas, ecológicas y de conservación en las que viven
-        las especies de fauna silvestre en un territorio determinado. En Colombia, departamentos como Cundinamarca concentran una
-        notable diversidad biológica, pero al mismo tiempo enfrentan presiones crecientes derivadas de la urbanización, la fragmentación
-        de hábitats, el tráfico ilegal de especies y la introducción de fauna exótica e invasora.
+        El bienestar animal es un campo de estudio que evalúa las condiciones físicas, sanitarias y sociales en las que viven
+        los animales en un territorio determinado. En Colombia, ciudades como Bogotá D.C. concentran una alta densidad de animales
+        domésticos y enfrentan desafíos crecientes relacionados con la tenencia responsable, el control de enfermedades zoonóticas
+        y la cobertura de programas de salud animal.
       </p>
       <p>
-        Este proyecto busca estudiar el estado del bienestar animal en Cundinamarca a través de un enfoque de minería de datos aplicado
-        a registros biológicos oficiales. Mediante técnicas de exploración, agrupamiento y análisis de asociaciones, se busca identificar
-        patrones en la distribución de especies amenazadas, endémicas, migratorias y exóticas, caracterizar perfiles de riesgo por grupo
-        biológico y descubrir relaciones significativas entre los distintos factores que determinan el estado de conservación de la fauna
-        en el departamento.
+        Este proyecto busca estudiar el estado del bienestar animal en Bogotá D.C. a través de un enfoque de minería de datos aplicado
+        a registros oficiales del Distrito. Mediante técnicas de exploración, agrupamiento y análisis, se busca identificar patrones
+        en el perfil de las mascotas registradas, caracterizar el comportamiento de las enfermedades zoonóticas por localidad y
+        descubrir relaciones entre los factores que determinan la salud animal en la ciudad.
       </p>
       <p>
-        El trabajo se apoya en cifras agregadas publicadas por el <strong>Sistema de Información sobre Biodiversidad de Colombia (SiB Colombia)</strong>
-        a través de cifras.biodiversidad.co. Estos datos consolidan información reportada por múltiples organizaciones de la red SiB y
-        proporcionan, para Cundinamarca, estadísticas por grupo biológico sobre especies registradas, categorías de amenaza nacionales
-        e internacionales, listas CITES, endemismo, migración y presencia de especies exóticas e invasoras.
+        Inicialmente el proyecto contempló un alcance a nivel de todo el departamento de Cundinamarca; sin embargo, tras evaluar
+        la disponibilidad y calidad de los datos abiertos existentes, se optó por enfocar el análisis en <strong>Bogotá D.C.</strong>,
+        donde los conjuntos de datos del Distrito ofrecen mayor granularidad, consistencia y cobertura temporal. Los datos provienen
+        del portal de <strong>Datos Abiertos Bogotá</strong> y corresponden a registros oficiales de la Secretaría Distrital de Salud.
       </p>
     </section>
 
@@ -48,29 +47,29 @@
 
       <h3>Objetivo general</h3>
       <p>
-        Realizar un estudio del bienestar animal en Cundinamarca como fenómeno multivariable mediante técnicas de minería de datos,
-        con el fin de identificar patrones, perfiles de riesgo y relaciones significativas entre los factores que determinan el estado
-        de conservación de la fauna silvestre en el departamento.
+        Realizar un estudio del bienestar animal en Bogotá D.C. como fenómeno multivariable mediante técnicas de minería de datos,
+        con el fin de identificar patrones, perfiles sanitarios y relaciones significativas entre los factores que determinan
+        el estado de salud y registro de las mascotas en el Distrito Capital.
       </p>
 
       <h3>Objetivos específicos</h3>
       <ol>
         <li>
-          Explorar y comprender la estructura de los datos disponibles a través de un análisis exploratorio, identificando distribuciones,
-          proporciones y características relevantes de las especies registradas en Cundinamarca por grupo biológico y categoría de amenaza.
+          Construir una estructura de datos integrada a partir de los cuatro datasets oficiales del Distrito, aplicando procesos de
+          ETL y modelado en esquema estrella para unificar la información sobre mascotas registradas, enfermedades zoonóticas,
+          vacunación antirrábica y cumplimiento de reportes sanitarios.
         </li>
         <li>
-          Segmentar los grupos biológicos en perfiles de riesgo mediante técnicas de agrupamiento, permitiendo caracterizar patrones
-          comunes entre grupos con niveles similares de amenaza, endemismo, presencia de especies exóticas e invasoras y registros
-          de observación.
+          Analizar el comportamiento del bienestar animal por localidad mediante un dashboard en Power BI, identificando tendencias
+          temporales, distribución de mascotas registradas y cobertura de los programas de vacunación.
         </li>
         <li>
-          Determinar los factores más asociados al estado de vulnerabilidad de las especies, evaluando la relación entre variables
-          como categoría de amenaza nacional e internacional, endemismo, condición migratoria y presencia en listas CITES.
+          Descubrir agrupamientos y patrones ocultos en los datos mediante técnicas de clustering aplicadas con Orange,
+          caracterizando perfiles de localidades y mascotas según su comportamiento sanitario y demográfico.
         </li>
         <li>
-          Descubrir relaciones significativas entre características de las especies mediante el análisis de asociaciones, con el
-          propósito de identificar combinaciones de factores que co-ocurren frecuentemente en situaciones de alto riesgo para la fauna.
+          Procesar y modelar los datos con Apache Spark para evaluar métricas de desempeño y obtener conclusiones
+          fundamentadas sobre los factores que inciden en el bienestar animal en la ciudad.
         </li>
       </ol>
     </section>
@@ -78,86 +77,97 @@
     <section id="dataset">
       <h2>Dataset</h2>
 
-      <h3>Ficha técnica</h3>
+      <h3>Fuentes de datos</h3>
+      <p>Se utilizaron cuatro conjuntos de datos oficiales del portal <strong>Datos Abiertos Bogotá</strong>, publicados por la Secretaría Distrital de Salud:</p>
+
+      <h4>1. Animales identificados con microchip por localidad</h4>
+      <table>
+        <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+        <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/data-set-animal-c4p-animales-identificados-con-microchip-por-localidad/resource/809709d1-6286-44e2-8a18-87ce49fc8ac9" target="_blank">Ver dataset</a></td></tr>
+        <tr><th>Corte</th><td>Julio 2020</td></tr>
+        <tr><th>Registros</th><td>~235.000 animales</td></tr>
+        <tr><th>Variables</th><td><code>microchip_animal</code>, <code>especie</code>, <code>sexo_animal</code>, <code>tamano_animal</code>, <code>potencialmente_peligroso</code>, <code>localidad_territorializacion</code></td></tr>
+      </table>
+      <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
       <table>
         <tr>
-          <th>Nombre</th>
-          <td>Cifras de Biodiversidad — Cundinamarca</td>
+          <th>microchip_animal</th><th>especie</th><th>sexo_animal</th><th>tamano_animal</th><th>potencialmente_peligroso</th><th>localidad_territorializacion</th>
         </tr>
-        <tr>
-          <th>Fuente</th>
-          <td>SiB Colombia — Sistema de Información sobre Biodiversidad de Colombia</td>
-        </tr>
-        <tr>
-          <th>URL</th>
-          <td><a href="https://cifras.biodiversidad.co" target="_blank">cifras.biodiversidad.co</a></td>
-        </tr>
-        <tr>
-          <th>Repositorio</th>
-          <td><a href="https://gitlab.com/sib-colombia/cifras-biodiversidad" target="_blank">gitlab.com/sib-colombia/cifras-biodiversidad</a></td>
-        </tr>
-        <tr>
-          <th>Corte de datos</th>
-          <td>2023 (con referencia comparativa a 2022)</td>
-        </tr>
-        <tr>
-          <th>Formato</th>
-          <td>TSV (datos tabulares separados por tabulación)</td>
-        </tr>
-        <tr>
-          <th>Tipo</th>
-          <td>Datos abiertos oficiales, agregados por grupo biológico y temática</td>
-        </tr>
-        <tr>
-          <th>Licencia</th>
-          <td>GNU General Public License v3.0</td>
-        </tr>
+        <tr><td>966000101056052-1</td><td>Canino</td><td>Hembra</td><td>Toys - enano</td><td>NO</td><td>Antonio Nariño</td></tr>
+        <tr><td>900193000203320-1</td><td>Felino</td><td>Macho</td><td>Pequeño</td><td>NO</td><td>Antonio Nariño</td></tr>
+        <tr><td>900193000203196-1</td><td>Canino</td><td>Macho</td><td>Mediano</td><td>NO</td><td>Antonio Nariño</td></tr>
+        <tr><td>9000193000203870</td><td>Canino</td><td>Hembra</td><td>Pequeño</td><td>NO</td><td>Antonio Nariño</td></tr>
+        <tr><td>992001000465839</td><td>Felino</td><td>Hembra</td><td>Pequeño</td><td>NO</td><td>Antonio Nariño</td></tr>
       </table>
 
-      <h3>Variables principales</h3>
+      <h4>2. Enfermedades zoonóticas en Bogotá D.C.</h4>
+      <table>
+        <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+        <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/enfermedades-zoonoticas-en-bogota-d-c/resource/531c959b-ba98-4105-84a9-c2fcdf0f269d" target="_blank">Ver dataset</a></td></tr>
+        <tr><th>Cobertura</th><td>Múltiples años</td></tr>
+        <tr><th>Variables</th><td><code>Año</code>, <code>Localidad</code>, <code>Casos notificados</code>, <code>Evento</code>, <code>Especie</code>, <code>Sub Red</code></td></tr>
+      </table>
+      <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
+      <table>
+        <tr>
+          <th>Año</th><th>Localidad</th><th>Casos notificados</th><th>Evento</th><th>Especie</th><th>Sub Red</th>
+        </tr>
+        <tr><td>2021</td><td>Antonio Nariño</td><td>1</td><td>Brucelósis</td><td>Caninos</td><td>Centro Oriente</td></tr>
+        <tr><td>2021</td><td>Barrios Unidos</td><td>2</td><td>Brucelósis</td><td>Caninos</td><td>Norte</td></tr>
+        <tr><td>2021</td><td>Bosa</td><td>3</td><td>Brucelósis</td><td>Caninos</td><td>Sur Occidente</td></tr>
+        <tr><td>2021</td><td>Chapinero</td><td>2</td><td>Brucelósis</td><td>Caninos</td><td>Norte</td></tr>
+        <tr><td>2021</td><td>Ciudad Bolívar</td><td>13</td><td>Brucelósis</td><td>Caninos</td><td>Sur</td></tr>
+      </table>
 
-      <h4>Identificación</h4>
-      <ul>
-        <li><code>slug_grupo</code> — Grupo biológico (aves, mamíferos, anfibios, reptiles, plantas, etc.)</li>
-        <li><code>slug_especie</code> — Identificador de la especie</li>
-        <li><code>slug_tematica</code> — Categoría temática asignada a la especie</li>
-      </ul>
+      <h4>3. Cobertura de vacunación antirrábica en Bogotá D.C.</h4>
+      <table>
+        <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+        <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/cobertura-de-vacunacion-antirrabica-en-bogota-d-c/resource/7dae7b92-76bf-4eae-856d-3519ed203a2b" target="_blank">Ver dataset</a></td></tr>
+        <tr><th>Cobertura</th><td>Múltiples años</td></tr>
+        <tr><th>Variables</th><td><code>Año</code>, <code>localidad</code>, <code>Sector publico</code>, <code>sector_privado</code>, <code>denominador</code>, <code>Cobertura</code></td></tr>
+      </table>
+      <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
+      <table>
+        <tr>
+          <th>Año</th><th>Localidad</th><th>Sector público</th><th>Sector privado</th><th>Denominador</th><th>Cobertura</th>
+        </tr>
+        <tr><td>2013</td><td>Usaquén</td><td>11.070</td><td>—</td><td>79.724</td><td>13,9%</td></tr>
+        <tr><td>2013</td><td>Chapinero</td><td>1.776</td><td>—</td><td>12.307</td><td>14,4%</td></tr>
+        <tr><td>2013</td><td>Santa Fe</td><td>6.029</td><td>—</td><td>10.129</td><td>59,5%</td></tr>
+        <tr><td>2013</td><td>San Cristóbal</td><td>17.523</td><td>—</td><td>53.039</td><td>33%</td></tr>
+        <tr><td>2013</td><td>Usme</td><td>17.984</td><td>—</td><td>11.139</td><td>161,5%</td></tr>
+      </table>
 
-      <h4>Registros y diversidad</h4>
-      <ul>
-        <li><code>registros_region_total</code> — Total de registros biológicos en el departamento</li>
-        <li><code>especies_region_total</code> — Total de especies registradas</li>
-        <li><code>registros</code> — Número de observaciones por especie</li>
-      </ul>
-
-      <h4>Estado de amenaza (Lista Nacional MADS)</h4>
-      <ul>
-        <li><code>especies_amenazadas_nacional_total</code> — Total de especies amenazadas</li>
-        <li><code>especies_amenazadas_nacional_cr</code> — En peligro crítico (CR)</li>
-        <li><code>especies_amenazadas_nacional_en</code> — En peligro (EN)</li>
-        <li><code>especies_amenazadas_nacional_vu</code> — Vulnerable (VU)</li>
-      </ul>
-
-      <h4>Estado de amenaza (Lista Roja UICN — global)</h4>
-      <ul>
-        <li><code>especies_amenazadas_global_cr / _en / _vu / _nt / _lc</code> — Categorías de la Lista Roja global</li>
-      </ul>
-
-      <h4>Otras categorías de interés</h4>
-      <ul>
-        <li><code>especies_cites_total</code> — Especies incluidas en apéndices CITES (comercio internacional)</li>
-        <li><code>especies_endemicas</code> — Especies endémicas de Colombia</li>
-        <li><code>especies_migratorias</code> — Especies migratorias</li>
-        <li><code>especies_exoticas_total</code> — Especies exóticas e invasoras</li>
-        <li><code>especies_invasoras</code> — Especies invasoras confirmadas</li>
-      </ul>
+      <h4>4. Cumplimiento en el reporte del diagnóstico de zoonosis</h4>
+      <table>
+        <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+        <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/cumplimiento-en-el-reporte-del-diagnostico-de-zoonosis-en-bogota-d-c/resource/c6ef52f0-2723-425a-8504-241272e35c04" target="_blank">Ver dataset</a></td></tr>
+        <tr><th>Cobertura</th><td>Múltiples años</td></tr>
+        <tr><th>Variables</th><td><code>Año</code>, <code>localidad</code>, <code>Numerador</code>, <code>denominador</code>, <code>Resultado</code>, <code>Sub Red</code></td></tr>
+      </table>
+      <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
+      <table>
+        <tr>
+          <th>Año</th><th>Localidad</th><th>Numerador</th><th>Denominador</th><th>Resultado</th><th>Sub Red</th>
+        </tr>
+        <tr><td>2019</td><td>Distrito</td><td>507</td><td>1.410</td><td>36%</td><td>—</td></tr>
+        <tr><td>2020</td><td>Distrito</td><td>608</td><td>1.073</td><td>57%</td><td>—</td></tr>
+        <tr><td>2021</td><td>Distrito</td><td>707</td><td>1.367</td><td>52%</td><td>—</td></tr>
+        <tr><td>2022</td><td>Distrito</td><td>914</td><td>1.320</td><td>69%</td><td>—</td></tr>
+        <tr><td>2023</td><td>Distrito</td><td>894</td><td>1.320</td><td>68%</td><td>—</td></tr>
+      </table>
 
       <h3>Justificación de la elección</h3>
       <p>
-        Este conjunto de datos fue seleccionado por provenir de una fuente oficial y abierta que consolida información de cientos de
-        organizaciones científicas de Colombia. Permite abordar el bienestar animal desde múltiples dimensiones simultáneas —amenaza,
-        endemismo, comercio ilegal, invasión biológica— lo que lo hace idóneo para un análisis multivariable mediante minería de datos.
-        Su estructura por grupo biológico y por especie posibilita tanto análisis agregados como análisis a nivel de especie individual.
+        Los cuatro datasets fueron seleccionados por provenir de fuentes oficiales del Distrito Capital y estar disponibles como datos
+        abiertos. Su combinación permite abordar el bienestar animal desde múltiples dimensiones: el perfil individual de las mascotas
+        registradas, la incidencia de enfermedades transmisibles entre animales y humanos, la cobertura de programas de vacunación y
+        el cumplimiento institucional en el reporte sanitario. Esta complementariedad los hace idóneos para un análisis integrado
+        mediante técnicas de minería de datos.
+      </p>
+      <p>
+        Se priorizó Bogotá D.C. sobre el resto de Cundinamarca dado que los municipios del departamento no cuentan con datasets
+        equivalentes de acceso público, lo que habría comprometido la calidad y consistencia del análisis.
       </p>
     </section>
 
@@ -167,45 +177,45 @@
       <article id="fase-1">
         <h3>Fase 1 — Comprensión y preparación de los datos</h3>
         <p>
-          En esta fase se realiza la exploración inicial de los datos con el objetivo de comprender su estructura,
-          las características de sus variables y la calidad de la información disponible. Se analizan distribuciones
-          de especies por grupo biológico, proporciones de categorías de amenaza, presencia de endemismo y fauna
-          exótica, así como relaciones preliminares entre variables. Posteriormente se realiza el proceso de
-          preparación, incluyendo la normalización de variables numéricas, la codificación de variables categóricas
-          y la selección de atributos relevantes para las etapas posteriores.
+          En esta fase se realiza la exploración y limpieza de los cuatro datasets oficiales del Distrito,
+          seguida de la construcción de un <strong>modelo estrella</strong> como estructura base del análisis.
+          Se definen las tablas de dimensiones (localidad, especie, sexo, tamaño, peligrosidad, evento) y las
+          tablas de hechos (animales registrados con microchip y salud por localidad), aplicando procesos de
+          ETL para integrar fuentes con distintos formatos, encodings y niveles de granularidad.
         </p>
       </article>
 
       <article id="fase-2">
-        <h3>Fase 2 — Identificación de perfiles de riesgo por grupo biológico</h3>
+        <h3>Fase 2 — Análisis multidimensional con Power BI</h3>
         <p>
-          En esta etapa se busca identificar patrones dentro de los grupos biológicos presentes en Cundinamarca
-          mediante técnicas de agrupamiento. El objetivo es descubrir segmentos de grupos que compartan características
-          similares en términos de nivel de amenaza, endemismo, presencia de invasoras y volumen de registros.
-          Estos perfiles permiten caracterizar el estado del bienestar animal desde una perspectiva comparativa
-          entre grupos taxonómicos.
+          Sobre el modelo estrella construido en la fase anterior se realizan consultas analíticas para explorar
+          el comportamiento del bienestar animal en Bogotá D.C. Se desarrolla un dashboard en <strong>Power BI</strong>
+          con KPIs, gráficos interactivos y filtros por localidad, año y tipo de evento, permitiendo visualizar
+          la distribución de mascotas registradas, la incidencia de enfermedades zoonóticas y la cobertura de
+          los programas de vacunación antirrábica a lo largo del tiempo.
         </p>
       </article>
 
       <article id="fase-3">
-        <h3>Fase 3 — Descubrimiento de relaciones entre factores de conservación</h3>
+        <h3>Fase 3 — Segmentación y conocimiento oculto con Orange</h3>
         <p>
-          En esta etapa se analizan las relaciones entre las distintas variables del dataset con el fin de identificar
-          combinaciones de características que co-ocurren frecuentemente en especies o grupos en situación de
-          vulnerabilidad. El objetivo es descubrir patrones interpretables que revelen cómo se asocian variables
-          como la categoría de amenaza, el endemismo, la condición migratoria y la inclusión en listas CITES,
-          contribuyendo a comprender la naturaleza multifactorial del riesgo para la fauna en Cundinamarca.
+          En esta fase se aplican técnicas de <strong>clustering</strong> para descubrir patrones no evidentes
+          en los datos. Se utiliza <strong>Orange</strong>, una herramienta de minería de datos visual basada
+          en flujos de widgets, que permite construir pipelines de análisis de forma intuitiva. Se configuran
+          flujos para cargar los datos, preprocesarlos, aplicar algoritmos de segmentación y visualizar los
+          grupos resultantes, con el fin de caracterizar perfiles de localidades y mascotas según su comportamiento
+          sanitario y demográfico.
         </p>
       </article>
 
       <article id="fase-4">
-        <h3>Fase 4 — Integración de hallazgos y conclusiones</h3>
+        <h3>Fase 4 — Procesamiento y modelado con Spark</h3>
         <p>
-          En la fase final se integran los resultados obtenidos a lo largo del análisis para construir una visión
-          global del estado del bienestar animal en Cundinamarca. Los patrones identificados, los perfiles de riesgo
-          por grupo biológico y las asociaciones descubiertas permiten elaborar conclusiones fundamentadas sobre
-          las principales dinámicas que determinan la vulnerabilidad de la fauna en el departamento, así como
-          identificar los grupos y especies que requieren mayor atención en términos de conservación.
+          En la fase final se utiliza <strong>Apache Spark</strong> para el procesamiento distribuido de los datos
+          y el entrenamiento de modelos analíticos. Se aprovecha la capacidad de Spark para manejar grandes
+          volúmenes de información de forma eficiente, evaluando métricas de desempeño que permiten profundizar
+          en el conocimiento extraído durante las fases anteriores y obtener conclusiones fundamentadas sobre
+          el estado del bienestar animal en Bogotá D.C.
         </p>
       </article>
 
@@ -214,21 +224,26 @@
     <section id="herramientas">
       <h2>Herramientas</h2>
 
-      <h3>Minería de datos y análisis</h3>
+      <h3>Procesamiento y análisis de datos</h3>
       <ul>
         <li><strong>Python 3.x</strong> — Lenguaje principal del proyecto</li>
         <li><strong>Pandas</strong> — Manipulación y exploración de datos</li>
         <li><strong>NumPy</strong> — Operaciones numéricas</li>
         <li><strong>Scikit-learn</strong> — Modelos de clustering y análisis</li>
-        <li><strong>MLxtend</strong> — Algoritmo Apriori para reglas de asociación</li>
         <li><strong>Matplotlib / Seaborn</strong> — Visualización de datos</li>
-        <li><strong>Jupyter Notebook</strong> — Entorno de desarrollo interactivo</li>
+        <li><strong>Apache Spark</strong> — Procesamiento distribuido y entrenamiento de modelos</li>
+      </ul>
+
+      <h3>Herramientas visuales y de inteligencia de negocios</h3>
+      <ul>
+        <li><strong>Orange</strong> — Minería de datos visual mediante flujos de widgets</li>
+        <li><strong>Power BI</strong> — Dashboard con KPIs, gráficos interactivos y filtros</li>
       </ul>
 
       <h3>Fuente de datos</h3>
       <ul>
-        <li><strong>SiB Colombia</strong> — Sistema de Información sobre Biodiversidad de Colombia</li>
-        <li><strong>GitLab SiB</strong> — Repositorio oficial de cifras de biodiversidad</li>
+        <li><strong>Datos Abiertos Bogotá</strong> — Portal de datos del Distrito Capital</li>
+        <li><strong>Secretaría Distrital de Salud</strong> — Entidad publicadora de los datasets utilizados</li>
       </ul>
 
       <h3>Bitácora y presentación</h3>
