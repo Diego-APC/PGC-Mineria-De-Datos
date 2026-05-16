@@ -1,0 +1,148 @@
+﻿Año;localidad;Numerador;denominador;Resultado;Sub Red
+2019;Distrito;507;1410;36%;
+2020;Distrito;608;1073;57%;
+2021;Distrito;707;1367;52%;
+2022;Distrito;914;1320;69%;
+2023;Distrito;894;1320;68%;
+2019;Usaquén;101;152;66%;Norte
+2020;Usaquén;118;133;89%;Norte
+2021;Usaquén;138;158;87%;Norte
+2022;Usaquén;187;153;122%;Norte
+2023;Usaquén;122;153;80%;Norte
+2019;Chapinero;11;25;44%;Norte
+2020;Chapinero;19;23;83%;Norte
+2021;Chapinero;26;28;93%;Norte
+2022;Chapinero;37;39;95%;Norte
+2023;Chapinero;28;39;72%;Norte
+2019;Santa Fe;4;8;50%;Centro Oriente
+2020;Santa Fe;3;8;38%;Centro Oriente
+2021;Santa Fe;3;9;33%;Centro Oriente
+2022;Santa Fe;3;9;33%;Centro Oriente
+2023;Santa Fe;5;9;56%;Centro Oriente
+2019;San Cristóbal;8;32;25%;Centro Oriente
+2020;San Cristóbal;10;25;40%;Centro Oriente
+2021;San Cristóbal;13;28;46%;Centro Oriente
+2022;San Cristóbal;15;34;44%;Centro Oriente
+2023;San Cristóbal;22;34;65%;Centro Oriente
+2019;Usme;5;34;15%;Sur
+2020;Usme;4;28;14%;Sur
+2021;Usme;3;27;11%;Sur
+2022;Usme;3;27;11%;Sur
+2023;Usme;9;27;33%;Sur
+2019;Tunjuelito;0;36;0%;Sur
+2020;Tunjuelito;1;26;4%;Sur
+2021;Tunjuelito;2;26;8%;Sur
+2022;Tunjuelito;1;29;3%;Sur
+2023;Tunjuelito;15;29;52%;Sur
+2019;Bosa;4;88;5%;Sur Occidente
+2020;Bosa;1;59;2%;Sur Occidente
+2021;Bosa;2;91;2%;Sur Occidente
+2022;Bosa;3;80;4%;Sur Occidente
+2023;Bosa;39;80;49%;Sur Occidente
+2019;Kennedy;10;240;4%;Sur Occidente
+2020;Kennedy;17;109;16%;Sur Occidente
+2021;Kennedy;17;188;9%;Sur Occidente
+2022;Kennedy;21;156;13%;Sur Occidente
+2023;Kennedy;88;156;56%;Sur Occidente
+2019;Fontibón;4;65;6%;Sur Occidente
+2020;Fontibón;9;55;16%;Sur Occidente
+2021;Fontibón;16;93;17%;Sur Occidente
+2022;Fontibón;20;62;32%;Sur Occidente
+2023;Fontibón;58;62;94%;Sur Occidente
+2019;Engativá;111;192;58%;Norte
+2020;Engativá;126;149;85%;Norte
+2021;Engativá;151;174;87%;Norte
+2022;Engativá;175;182;96%;Norte
+2023;Engativá;124;182;68%;Norte
+2019;Suba;137;232;59%;Norte
+2020;Suba;170;185;92%;Norte
+2021;Suba;198;213;93%;Norte
+2022;Suba;263;247;106%;Norte
+2023;Suba;171;247;69%;Norte
+2019;Barrios Unidos;31;54;57%;Norte
+2020;Barrios Unidos;42;41;102%;Norte
+2021;Barrios Unidos;49;53;92%;Norte
+2022;Barrios Unidos;58;58;100%;Norte
+2023;Barrios Unidos;44;58;76%;Norte
+2019;Teusaquillo;42;53;79%;Norte
+2020;Teusaquillo;52;42;124%;Norte
+2021;Teusaquillo;57;60;95%;Norte
+2022;Teusaquillo;74;60;123%;Norte
+2023;Teusaquillo;46;60;77%;Norte
+2019;Los Mártires;7;15;47%;Centro Oriente
+2020;Los Mártires;7;14;50%;Centro Oriente
+2021;Los Mártires;3;15;20%;Centro Oriente
+2022;Los Mártires;8;13;62%;Centro Oriente
+2023;Los Mártires;11;13;85%;Centro Oriente
+2019;Antonio Nariño;12;21;57%;Centro Oriente
+2020;Antonio Nariño;6;20;30%;Centro Oriente
+2021;Antonio Nariño;7;24;29%;Centro Oriente
+2022;Antonio Nariño;12;25;48%;Centro Oriente
+2023;Antonio Nariño;20;25;80%;Centro Oriente
+2019;Puente Aranda;6;61;10%;Sur Occidente
+2020;Puente Aranda;11;54;20%;Sur Occidente
+2021;Puente Aranda;11;68;16%;Sur Occidente
+2022;Puente Aranda;16;39;41%;Sur Occidente
+2023;Puente Aranda;35;39;90%;Sur Occidente
+2019;Candelaria;1;4;25%;Centro Oriente
+2020;Candelaria;1;4;25%;Centro Oriente
+2021;Candelaria;1;4;25%;Centro Oriente
+2022;Candelaria;0;4;0%;Centro Oriente
+2023;Candelaria;3;4;75%;Centro Oriente
+2019;Rafael Uribe;5;30;17%;Centro Oriente
+2020;Rafael Uribe;5;38;13%;Centro Oriente
+2021;Rafael Uribe;4;48;8%;Centro Oriente
+2022;Rafael Uribe;7;47;15%;Centro Oriente
+2023;Rafael Uribe;39;47;83%;Centro Oriente
+2019;Ciudad Bolívar;8;68;12%;Sur
+2020;Ciudad Bolívar;6;60;10%;Sur
+2021;Ciudad Bolívar;6;60;10%;Sur
+2022;Ciudad Bolívar;11;56;20%;Sur
+2023;Ciudad Bolívar;15;56;27%;Sur
+2019;Sumapaz;0;0;0%;Sur
+2020;Sumapaz;0;0;0%;Sur
+2021;Sumapaz;0;0;0%;Sur
+2022;Sumapaz;0;0;0%;Sur
+2023;Sumapaz;0;0;0%;Sur
+2024;Distrito;1025;1243;82%;
+2024;Usaquén;137;173;79%;Norte
+2024;Chapinero;29;30;97%;Norte
+2024;Santa Fe;8;10;80%;Centro Oriente
+2024;San Cristóbal;32;32;100%;Centro Oriente
+2024;Usme;17;32;53%;Sur
+2024;Tunjuelito;19;28;68%;Sur
+2024;Bosa;55;60;92%;Sur Occidente
+2024;Kennedy;118;135;87%;Sur Occidente
+2024;Fontibón;60;65;92%;Sur Occidente
+2024;Engativá;127;167;76%;Norte
+2024;Suba;183;238;77%;Norte
+2024;Barrios Unidos;48;46;104%;Norte
+2024;Teusaquillo;46;46;100%;Norte
+2024;Los Mártires;13;13;100%;Centro Oriente
+2024;Antonio Nariño;19;25;76%;Centro Oriente
+2024;Puente Aranda;38;42;90%;Sur Occidente
+2024;Candelaria;3;3;100%;Centro Oriente
+2024;Rafael Uribe;41;43;95%;Centro Oriente
+2024;Ciudad Bolívar;32;55;58%;Sur
+2024;Sumapaz;0;0;0%;Sur
+2025;Distrito;1146;1218;94%;
+2025;Usaquén;153;156;98%;Norte
+2025;Chapinero;31;28;111%;Norte
+2025;Santa Fe;9;10;90%;Centro Oriente
+2025;San Cristóbal;31;36;86%;Centro Oriente
+2025;Usme;21;26;81%;Sur
+2025;Tunjuelito;24;28;86%;Sur
+2025;Bosa;61;61;100%;Sur Occidente
+2025;Kennedy;133;163;82%;Sur Occidente
+2025;Fontibón;63;74;85%;Sur Occidente
+2025;Engativá;145;158;92%;Norte
+2025;Suba;196;207;95%;Norte
+2025;Barrios Unidos;50;40;125%;Norte
+2025;Teusaquillo;55;43;128%;Norte
+2025;Los Mártires;14;15;93%;Centro Oriente
+2025;Antonio Nariño;26;26;100%;Centro Oriente
+2025;Puente Aranda;46;46;100%;Sur Occidente
+2025;Candelaria;3;3;100%;Centro Oriente
+2025;Rafael Uribe;46;51;90%;Centro Oriente
+2025;Ciudad Bolívar;39;47;83%;Sur
+2025;Sumapaz;0;0;0%;Sur

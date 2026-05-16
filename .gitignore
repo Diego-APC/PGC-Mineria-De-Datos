@@ -43,6 +43,10 @@ build/
 *.sqlite
 *.sqlite3
 
+# Excepciones para ModeloEstrella
+!ModeloEstrella/Raw/*.csv
+!ModeloEstrella/DataLimpia/*.csv
+
 # Modelos entrenados
 *.pkl
 *.joblib

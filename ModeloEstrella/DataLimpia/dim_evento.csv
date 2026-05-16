@@ -1,0 +1,44 @@
+id_evento,evento,especie_afectada
+1,Ancylostoma,Caninos
+2,Anticuerpos Borrelia Burgdorferi,Caninos
+3,Bartonella,Felinos
+4,Borreliosis,Caninos
+5,Brucelósis,Caninos
+6,Brucelósis,Felinos
+7,Brucelósis,caninos
+8,Campilobacteriosis,Felinos
+9,Clostridiosis,Caninos
+10,Clostridiosis,Felinos
+11,Coccidiosis,Caninos
+12,Coccidiosis,Felinos
+13,Criptococosis,Caninos
+14,Dermatomicosis,Felinos
+15,Dipilidiasis,Caninos
+16,Dipilidiasis,Felinos
+17,Ehrlichia Canis,Caninos
+18,Escherichia coli,caninos
+19,Esplenitis micótica,Caninos
+20,Giardiasis,Caninos
+21,Giardiasis,Felinos
+22,Giardiosis,Felinos
+23,Leishmaniasis,Caninos
+24,Leishmaniasis,Felinos
+25,Leptospirósis,Caninos
+26,Leptospirósis,Felinos
+27,Malassezia,Caninos
+28,Malassezia,Felinos
+29,Neospora,Caninos
+30,Otro,Caninos
+31,Salmonelosis,Caninos
+32,Salomonelosis,Caninos
+33,Sarna  Sarcóptica,Felinos
+34,Sarna  Sarcóptica,Otro
+35,Sarna Demodecica,Caninos
+36,Sarna Demodécica,Caninos
+37,Sarna Demodécica,Felinos
+38,Sarna Sarcóptica,Caninos
+39,Sarna Sarcóptica,Felinos
+40,Sarna Sarcóptica,Otro
+41,Toxoplasmosis,Caninos
+42,Toxoplasmosis,Felinos
+43,salmonelosis,Caninos
