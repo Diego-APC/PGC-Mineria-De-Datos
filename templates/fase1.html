@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+
+{% block title %}Fase 1 — ETL y Modelo Estrella{% endblock %}
+
+{% block content %}
+
+<header class="hero-banner" style="min-height: 180px;">
+    <div class="hero-content">
+        <p class="subtitle">Fase 1</p>
+        <h1>Comprensión y preparación de los datos</h1>
+        <p class="subtitle">ETL · Modelo Estrella · Integración de datasets</p>
+    </div>
+</header>
+
+<section class="info-section">
+
+    <!-- 1. Adquisición -->
+    <div class="accordion">
+        <button class="accordion-header">
+            <span><i class="fas fa-download"></i> Adquisición de datos</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+            <p>
+                Se descargaron cuatro datasets oficiales del portal <strong>Datos Abiertos Bogotá</strong>,
+                publicados por la Secretaría Distrital de Salud:
+            </p>
+            <ul>
+                <li><strong>reporte_corte_31_07_2020_microchips.csv</strong> — Animales identificados con microchip por localidad</li>
+                <li><strong>osb_saludambiental_enfermedades_zoonoticas.csv</strong> — Enfermedades zoonóticas en Bogotá D.C.</li>
+                <li><strong>osb_saludamb-cobert_antirrab.csv</strong> — Cobertura de vacunación antirrábica en Bogotá D.C.</li>
+                <li><strong>osb_saludambiental-cumplimientoreportezoonosis.csv</strong> — Cumplimiento en el reporte del diagnóstico de zoonosis</li>
+            </ul>
+            <p>
+                Cada archivo presentó particularidades de encoding y separadores distintos
+                (<code>latin-1</code>, <code>cp850</code>, <code>utf-8</code>; separador <code>;</code>),
+                lo que se tuvo en cuenta desde la etapa de carga.
+            </p>
+        </div>
+    </div>
+
+    <!-- 2. ETL -->
+    <div class="accordion">
+        <button class="accordion-header">
+            <span><i class="fas fa-cogs"></i> Limpieza y transformación (ETL)</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+            <p>
+                Se desarrollaron <strong>8 scripts de Python</strong> usando la librería <strong>Pandas</strong>.
+                Cada script genera una tabla del modelo estrella a partir de los archivos en bruto:
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Script</th>
+                        <th>Tabla generada</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><code>1_dim_especie.py</code></td>
+                        <td><code>dim_especie.csv</code></td>
+                        <td>Extrae los valores únicos de especie animal (Canino / Felino) y les asigna una llave sustituta.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><code>2_dim_sexo.py</code></td>
+                        <td><code>dim_sexo.csv</code></td>
+                        <td>Extrae los valores únicos de sexo del animal (Macho / Hembra) con su llave sustituta.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><code>3_dim_tamanio.py</code></td>
+                        <td><code>dim_tamanio.csv</code></td>
+                        <td>Extrae las categorías de tamaño y agrega un campo de orden numérico de menor a mayor (Toys → Gigante).</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><code>4_dim_peligrosidad.py</code></td>
+                        <td><code>dim_peligrosidad.csv</code></td>
+                        <td>Extrae los valores de peligrosidad potencial del animal (SI / NO).</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><code>5_dim_evento.py</code></td>
+                        <td><code>dim_evento.csv</code></td>
+                        <td>Genera la dimensión de eventos zoonóticos combinando el tipo de enfermedad y la especie afectada.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><code>6_dim_localidad.py</code></td>
+                        <td><code>dim_localidad.csv</code></td>
+                        <td>Construye la dimensión de localidad enriquecida con métricas del perfil de mascotas (% caninos, % felinos, % hembras, % peligrosos) y la Sub Red administrativa. Maneja diferencias de acentuación entre archivos.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><code>7_hecho_animal.py</code></td>
+                        <td><code>hecho_animal.csv</code></td>
+                        <td>Tabla de hechos principal: un registro por mascota registrada con microchip. Reemplaza los atributos categóricos por llaves foráneas a las dimensiones.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><code>8_hecho_salud_localidad.py</code></td>
+                        <td><code>hecho_salud_localidad.csv</code></td>
+                        <td>Tabla de hechos de salud: integra los tres datasets de salud (zoonosis, vacunación y cumplimiento de reporte) en una sola tabla por año y localidad.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 3. Resultados ETL -->
+    <div class="accordion">
+        <button class="accordion-header">
+            <span><i class="fas fa-table"></i> Resultados del ETL</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+            <p>Las tablas generadas por los scripts se almacenaron en la carpeta <code>DataLimpia/</code>. A continuación se muestra una muestra de cada una:</p>
+
+            <h4>dim_especie</h4>
+            <table>
+                <tr><th>id_especie</th><th>especie</th></tr>
+                <tr><td>1</td><td>Canino</td></tr>
+                <tr><td>2</td><td>Felino</td></tr>
+            </table>
+
+            <h4>dim_sexo</h4>
+            <table>
+                <tr><th>id_sexo</th><th>sexo</th></tr>
+                <tr><td>1</td><td>Hembra</td></tr>
+                <tr><td>2</td><td>Macho</td></tr>
+            </table>
+
+            <h4>dim_tamanio</h4>
+            <table>
+                <tr><th>id_tamanio</th><th>tamanio</th><th>orden</th></tr>
+                <tr><td>1</td><td>Gigante</td><td>5</td></tr>
+                <tr><td>2</td><td>Grande</td><td>4</td></tr>
+                <tr><td>3</td><td>Mediano</td><td>3</td></tr>
+                <tr><td>4</td><td>Miniatura</td><td>1</td></tr>
+                <tr><td>5</td><td>Pequeño</td><td>2</td></tr>
+            </table>
+
+            <h4>dim_peligrosidad</h4>
+            <table>
+                <tr><th>id_peligrosidad</th><th>es_peligroso</th></tr>
+                <tr><td>1</td><td>NO</td></tr>
+                <tr><td>2</td><td>SI</td></tr>
+            </table>
+
+            <h4>dim_evento (primeras 5 filas)</h4>
+            <table>
+                <tr><th>id_evento</th><th>evento</th><th>especie_afectada</th></tr>
+                <tr><td>1</td><td>Brucelósis</td><td>Caninos</td></tr>
+                <tr><td>2</td><td>Brucelósis</td><td>Bovinos</td></tr>
+                <tr><td>3</td><td>Leptospirosis</td><td>Caninos</td></tr>
+                <tr><td>4</td><td>Rabia</td><td>Caninos</td></tr>
+                <tr><td>5</td><td>Toxocariasis</td><td>Caninos</td></tr>
+            </table>
+
+            <h4>dim_localidad (primeras 5 filas)</h4>
+            <table>
+                <tr><th>id_localidad</th><th>localidad</th><th>total_mascotas</th><th>pct_caninos</th><th>pct_felinos</th><th>sub_red</th></tr>
+                <tr><td>1</td><td>Antonio Nariño</td><td>5.823</td><td>74,2%</td><td>25,8%</td><td>Centro Oriente</td></tr>
+                <tr><td>2</td><td>Barrios Unidos</td><td>9.114</td><td>72,1%</td><td>27,9%</td><td>Norte</td></tr>
+                <tr><td>3</td><td>Bosa</td><td>14.302</td><td>78,3%</td><td>21,7%</td><td>Sur Occidente</td></tr>
+                <tr><td>4</td><td>Chapinero</td><td>8.651</td><td>68,4%</td><td>31,6%</td><td>Norte</td></tr>
+                <tr><td>5</td><td>Ciudad Bolívar</td><td>18.940</td><td>80,1%</td><td>19,9%</td><td>Sur</td></tr>
+            </table>
+
+            <h4>hecho_animal (primeras 5 filas)</h4>
+            <table>
+                <tr><th>id_animal</th><th>microchip_animal</th><th>id_especie</th><th>id_sexo</th><th>id_tamanio</th><th>id_peligrosidad</th><th>id_localidad</th></tr>
+                <tr><td>1</td><td>966000101056052</td><td>1</td><td>1</td><td>5</td><td>1</td><td>1</td></tr>
+                <tr><td>2</td><td>900193000203320</td><td>2</td><td>2</td><td>5</td><td>1</td><td>1</td></tr>
+                <tr><td>3</td><td>900193000203196</td><td>1</td><td>2</td><td>3</td><td>1</td><td>1</td></tr>
+                <tr><td>4</td><td>9000193000203870</td><td>1</td><td>1</td><td>5</td><td>1</td><td>1</td></tr>
+                <tr><td>5</td><td>992001000465839</td><td>2</td><td>1</td><td>5</td><td>1</td><td>1</td></tr>
+            </table>
+
+            <h4>hecho_salud_localidad (primeras 5 filas)</h4>
+            <table>
+                <tr><th>id_hecho</th><th>anio</th><th>id_localidad</th><th>id_evento</th><th>casos_zoonosis</th><th>cobertura_vacuna</th><th>pct_cumplimiento</th></tr>
+                <tr><td>1</td><td>2021</td><td>1</td><td>1</td><td>1</td><td>—</td><td>52</td></tr>
+                <tr><td>2</td><td>2021</td><td>2</td><td>1</td><td>2</td><td>—</td><td>52</td></tr>
+                <tr><td>3</td><td>2021</td><td>3</td><td>1</td><td>3</td><td>—</td><td>52</td></tr>
+                <tr><td>4</td><td>2021</td><td>4</td><td>1</td><td>2</td><td>—</td><td>52</td></tr>
+                <tr><td>5</td><td>2021</td><td>5</td><td>1</td><td>13</td><td>—</td><td>52</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 4. Power BI -->
+    <div class="accordion">
+        <button class="accordion-header">
+            <span><i class="fas fa-project-diagram"></i> Construcción del modelo en Power BI</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+
+            <h3>Conexión a los archivos de salida</h3>
+            <p>
+                Una vez generadas las tablas por los scripts de Python, se conectaron los archivos CSV de la carpeta
+                <code>DataLimpia/</code> a Power BI Desktop como fuente de datos de tipo texto/CSV.
+                Se cargaron las 6 dimensiones y las 2 tablas de hechos.
+            </p>
+
+            <h3>Transformación con Power Query</h3>
+            <p>
+                Para que las tablas de hechos mostraran los valores descriptivos en lugar de solo los IDs,
+                se utilizó la opción <strong>Combinar consultas</strong> de Power Query. Esta operación es
+                equivalente a un JOIN: permite que en el modelo estrella las relaciones queden por ID,
+                pero que en las vistas y reportes se visualicen directamente los valores (por ejemplo,
+                "Canino" en lugar de <code>id_especie = 1</code>).
+            </p>
+            <p>
+                La dimensión de evento (<code>dim_evento</code>) fue la excepción: esta tabla se cargó
+                directamente sin transformación adicional en Power Query, ya que su estructura combinada
+                (evento + especie afectada) es suficiente para los reportes.
+            </p>
+
+            <h3>Creación de Dim_Tiempo</h3>
+            <p>
+                La dimensión de tiempo no existía como archivo CSV, por lo que se creó directamente en
+                Power BI mediante una consulta en blanco con el siguiente enfoque: se generó una tabla
+                con los años presentes en los datos, extrayendo atributos como año, semestre y etiquetas
+                para su uso en filtros y ejes de gráficos.
+            </p>
+
+            <h3>Modelo estrella resultante</h3>
+            <p>
+                El modelo quedó conformado por <strong>2 tablas de hechos</strong> y <strong>7 dimensiones</strong>
+                (incluyendo Dim_Tiempo), con las relaciones definidas mediante las llaves foráneas generadas
+                en el ETL. Los datasets conservan los IDs en lugar de los valores descriptivos, lo que
+                facilita su uso en etapas posteriores del proyecto (clustering con Orange, procesamiento con Spark).
+            </p>
+            <div class="img-container">
+                <img src="{{ url_for('static', filename='img/ImagenModeloEstrella.png') }}"
+                     alt="Diagrama del modelo estrella en Power BI"
+                     style="max-width: 100%; border-radius: 8px; margin-top: 1rem;">
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<div style="text-align: center; margin: 2rem 0;">
+    <a href="{{ url_for('home') }}" class="phase-btn active">← Volver al inicio</a>
+</div>
+
+<footer class="footer">
+    <p>Proyecto desarrollado para la materia de Minería de Datos</p>
+</footer>
+
+{% endblock %}
