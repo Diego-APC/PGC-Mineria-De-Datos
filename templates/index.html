@@ -1,13 +1,233 @@
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mineria de Datos</title>
-</head>
-<body>
-    <h1> Mineria de Datos</h1>
-    <p> Contenido <b>PGC </b></p>
-</body>
-</html>
+{% block title %}Inicio - Bienestar Animal Bogotá{% endblock %}
+
+{% block content %}
+    <!-- Banner principal -->
+    <header class="hero-banner">
+        <div class="hero-content">
+            <h1>Estudio del bienestar animal en Bogotá D.C.<br>mediante técnicas de minería de datos</h1>
+            <p class="subtitle">Proyecto de Minería de Datos</p>
+            <div class="team">
+                <span><i class="fas fa-user-graduate"></i> Diego Alexander Pinzón Camargo</span>
+                <span><i class="fas fa-user-graduate"></i> Julián Santiago Gutiérrez Rodríguez</span>
+                <span><i class="fas fa-user-graduate"></i> Andres Felipe Segura Suarez</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de fases (botones) -->
+    <section class="phases-section">
+        <h2>Fases del proyecto</h2>
+        <div class="phases-grid">
+            <!-- Fase 1: sin enlace aún (se puede cambiar después) -->
+            <div class="phase-card">
+                <div class="phase-number">Fase 1</div>
+                <h3>Comprensión y preparación de datos</h3>
+                <p>ETL, modelo estrella, integración de datasets</p>
+                <a href="#" class="phase-btn disabled">Próximamente</a>
+            </div>
+            <!-- Fase 2: enlace a /dashboard/ -->
+            <div class="phase-card">
+                <div class="phase-number">Fase 2</div>
+                <h3>Análisis multidimensional con Power BI</h3>
+                <p>Dashboard interactivo con KPIs y filtros</p>
+                <a href="{{ url_for('dashboard') }}" class="phase-btn active">Ver dashboard →</a>
+            </div>
+            <!-- Fase 3: desactivada -->
+            <div class="phase-card disabled">
+                <div class="phase-number">Fase 3</div>
+                <h3>Segmentación y conocimiento oculto con Orange</h3>
+                <p>Clustering visual con flujos de widgets</p>
+                <span class="phase-btn inactive">No disponible</span>
+            </div>
+            <!-- Fase 4: desactivada -->
+            <div class="phase-card disabled">
+                <div class="phase-number">Fase 4</div>
+                <h3>Procesamiento y modelado con Spark</h3>
+                <p>Procesamiento distribuido y métricas</p>
+                <span class="phase-btn inactive">No disponible</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de información general (acordeones) -->
+    <section class="info-section">
+        <h2>Información del proyecto</h2>
+        
+        <!-- Acordeón Introducción -->
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>📖 Introducción</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+                <p>El bienestar animal es un campo de estudio que evalúa las condiciones físicas, sanitarias y sociales en las que viven los animales en un territorio determinado. En Colombia, ciudades como Bogotá D.C. concentran una alta densidad de animales domésticos y enfrentan desafíos crecientes relacionados con la tenencia responsable, el control de enfermedades zoonóticas y la cobertura de programas de salud animal.</p>
+                <p>Este proyecto busca estudiar el estado del bienestar animal en Bogotá D.C. a través de un enfoque de minería de datos aplicado a registros oficiales del Distrito. Mediante técnicas de exploración, agrupamiento y análisis, se busca identificar patrones en el perfil de las mascotas registradas, caracterizar el comportamiento de las enfermedades zoonóticas por localidad y descubrir relaciones entre los factores que determinan la salud animal en la ciudad.</p>
+                <p>Inicialmente el proyecto contempló un alcance a nivel de todo el departamento de Cundinamarca; sin embargo, tras evaluar la disponibilidad y calidad de los datos abiertos existentes, se optó por enfocar el análisis en <strong>Bogotá D.C.</strong>, donde los conjuntos de datos del Distrito ofrecen mayor granularidad, consistencia y cobertura temporal. Los datos provienen del portal de <strong>Datos Abiertos Bogotá</strong> y corresponden a registros oficiales de la Secretaría Distrital de Salud.</p>
+            </div>
+        </div>
+
+        <!-- Acordeón Objetivos -->
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>🎯 Objetivos</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+                <h3>Objetivo general</h3>
+                <p>Realizar un estudio del bienestar animal en Bogotá D.C. como fenómeno multivariable mediante técnicas de minería de datos, con el fin de identificar patrones, perfiles sanitarios y relaciones significativas entre los factores que determinan el estado de salud y registro de las mascotas en el Distrito Capital.</p>
+                <h3>Objetivos específicos</h3>
+                <ol>
+                    <li>Construir una estructura de datos integrada a partir de los cuatro datasets oficiales del Distrito, aplicando procesos de ETL y modelado en esquema estrella para unificar la información sobre mascotas registradas, enfermedades zoonóticas, vacunación antirrábica y cumplimiento de reportes sanitarios.</li>
+                    <li>Analizar el comportamiento del bienestar animal por localidad mediante un dashboard en Power BI, identificando tendencias temporales, distribución de mascotas registradas y cobertura de los programas de vacunación.</li>
+                    <li>Descubrir agrupamientos y patrones ocultos en los datos mediante técnicas de clustering aplicadas con Orange, caracterizando perfiles de localidades y mascotas según su comportamiento sanitario y demográfico.</li>
+                    <li>Procesar y modelar los datos con Apache Spark para evaluar métricas de desempeño y obtener conclusiones fundamentadas sobre los factores que inciden en el bienestar animal en la ciudad.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Acordeón Datasets (resumido con las tablas importantes) -->
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>📊 Datasets utilizados</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+                <h3>Fuentes de datos</h3>
+                <p>Se utilizaron cuatro conjuntos de datos oficiales del portal <strong>Datos Abiertos Bogotá</strong>, publicados por la Secretaría Distrital de Salud:</p>
+
+                <h4>1. Animales identificados con microchip por localidad</h4>
+                <table>
+                    <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+                    <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/data-set-animal-c4p-animales-identificados-con-microchip-por-localidad/resource/809709d1-6286-44e2-8a18-87ce49fc8ac9" target="_blank">Ver dataset</a></td></tr>
+                    <tr><th>Corte</th><td>Julio 2020</td></tr>
+                    <tr><th>Registros</th><td>~235.000 animales</td></tr>
+                    <tr><th>Variables</th><td><code>microchip_animal</code>, <code>especie</code>, <code>sexo_animal</code>, <code>tamano_animal</code>, <code>potencialmente_peligroso</code>, <code>localidad_territorializacion</code></td></tr>
+                </table>
+                <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
+                <table>
+                    <tr>
+                    <th>microchip_animal</th><th>especie</th><th>sexo_animal</th><th>tamano_animal</th><th>potencialmente_peligroso</th><th>localidad_territorializacion</th>
+                    </tr>
+                    <tr><td>966000101056052-1</td><td>Canino</td><td>Hembra</td><td>Toys - enano</td><td>NO</td><td>Antonio Nariño</td></tr>
+                    <tr><td>900193000203320-1</td><td>Felino</td><td>Macho</td><td>Pequeño</td><td>NO</td><td>Antonio Nariño</td></tr>
+                    <tr><td>900193000203196-1</td><td>Canino</td><td>Macho</td><td>Mediano</td><td>NO</td><td>Antonio Nariño</td></tr>
+                    <tr><td>9000193000203870</td><td>Canino</td><td>Hembra</td><td>Pequeño</td><td>NO</td><td>Antonio Nariño</td></tr>
+                    <tr><td>992001000465839</td><td>Felino</td><td>Hembra</td><td>Pequeño</td><td>NO</td><td>Antonio Nariño</td></tr>
+                </table>
+
+                <h4>2. Enfermedades zoonóticas en Bogotá D.C.</h4>
+                <table>
+                    <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+                    <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/enfermedades-zoonoticas-en-bogota-d-c/resource/531c959b-ba98-4105-84a9-c2fcdf0f269d" target="_blank">Ver dataset</a></td></tr>
+                    <tr><th>Cobertura</th><td>Múltiples años</td></tr>
+                    <tr><th>Variables</th><td><code>Año</code>, <code>Localidad</code>, <code>Casos notificados</code>, <code>Evento</code>, <code>Especie</code>, <code>Sub Red</code></td></tr>
+                </table>
+                <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
+                <table>
+                    <tr>
+                    <th>Año</th><th>Localidad</th><th>Casos notificados</th><th>Evento</th><th>Especie</th><th>Sub Red</th>
+                    </tr>
+                    <tr><td>2021</td><td>Antonio Nariño</td><td>1</td><td>Brucelósis</td><td>Caninos</td><td>Centro Oriente</td></tr>
+                    <tr><td>2021</td><td>Barrios Unidos</td><td>2</td><td>Brucelósis</td><td>Caninos</td><td>Norte</td></tr>
+                    <tr><td>2021</td><td>Bosa</td><td>3</td><td>Brucelósis</td><td>Caninos</td><td>Sur Occidente</td></tr>
+                    <tr><td>2021</td><td>Chapinero</td><td>2</td><td>Brucelósis</td><td>Caninos</td><td>Norte</td></tr>
+                    <tr><td>2021</td><td>Ciudad Bolívar</td><td>13</td><td>Brucelósis</td><td>Caninos</td><td>Sur</td></tr>
+                </table>
+
+                <h4>3. Cobertura de vacunación antirrábica en Bogotá D.C.</h4>
+                <table>
+                    <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+                    <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/cobertura-de-vacunacion-antirrabica-en-bogota-d-c/resource/7dae7b92-76bf-4eae-856d-3519ed203a2b" target="_blank">Ver dataset</a></td></tr>
+                    <tr><th>Cobertura</th><td>Múltiples años</td></tr>
+                    <tr><th>Variables</th><td><code>Año</code>, <code>localidad</code>, <code>Sector publico</code>, <code>sector_privado</code>, <code>denominador</code>, <code>Cobertura</code></td></tr>
+                </table>
+                <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
+                <table>
+                    <tr>
+                    <th>Año</th><th>Localidad</th><th>Sector público</th><th>Sector privado</th><th>Denominador</th><th>Cobertura</th>
+                    </tr>
+                    <tr><td>2013</td><td>Usaquén</td><td>11.070</td><td>—</td><td>79.724</td><td>13,9%</td></tr>
+                    <tr><td>2013</td><td>Chapinero</td><td>1.776</td><td>—</td><td>12.307</td><td>14,4%</td></tr>
+                    <tr><td>2013</td><td>Santa Fe</td><td>6.029</td><td>—</td><td>10.129</td><td>59,5%</td></tr>
+                    <tr><td>2013</td><td>San Cristóbal</td><td>17.523</td><td>—</td><td>53.039</td><td>33%</td></tr>
+                    <tr><td>2013</td><td>Usme</td><td>17.984</td><td>—</td><td>11.139</td><td>161,5%</td></tr>
+                </table>
+
+                <h4>4. Cumplimiento en el reporte del diagnóstico de zoonosis</h4>
+                <table>
+                    <tr><th>Fuente</th><td>Datos Abiertos Bogotá — Secretaría Distrital de Salud</td></tr>
+                    <tr><th>URL</th><td><a href="https://datosabiertos.bogota.gov.co/dataset/cumplimiento-en-el-reporte-del-diagnostico-de-zoonosis-en-bogota-d-c/resource/c6ef52f0-2723-425a-8504-241272e35c04" target="_blank">Ver dataset</a></td></tr>
+                    <tr><th>Cobertura</th><td>Múltiples años</td></tr>
+                    <tr><th>Variables</th><td><code>Año</code>, <code>localidad</code>, <code>Numerador</code>, <code>denominador</code>, <code>Resultado</code>, <code>Sub Red</code></td></tr>
+                </table>
+                <p><strong>Muestra de datos (primeras 5 filas):</strong></p>
+                <table>
+                    <tr>
+                    <th>Año</th><th>Localidad</th><th>Numerador</th><th>Denominador</th><th>Resultado</th><th>Sub Red</th>
+                    </tr>
+                    <tr><td>2019</td><td>Distrito</td><td>507</td><td>1.410</td><td>36%</td><td>—</td></tr>
+                    <tr><td>2020</td><td>Distrito</td><td>608</td><td>1.073</td><td>57%</td><td>—</td></tr>
+                    <tr><td>2021</td><td>Distrito</td><td>707</td><td>1.367</td><td>52%</td><td>—</td></tr>
+                    <tr><td>2022</td><td>Distrito</td><td>914</td><td>1.320</td><td>69%</td><td>—</td></tr>
+                    <tr><td>2023</td><td>Distrito</td><td>894</td><td>1.320</td><td>68%</td><td>—</td></tr>
+                </table>
+
+                <h3>Justificación de la elección</h3>
+                <p>
+                    Los cuatro datasets fueron seleccionados por provenir de fuentes oficiales del Distrito Capital y estar disponibles como datos
+                    abiertos. Su combinación permite abordar el bienestar animal desde múltiples dimensiones: el perfil individual de las mascotas
+                    registradas, la incidencia de enfermedades transmisibles entre animales y humanos, la cobertura de programas de vacunación y
+                    el cumplimiento institucional en el reporte sanitario. Esta complementariedad los hace idóneos para un análisis integrado
+                    mediante técnicas de minería de datos.
+                </p>
+                <p>
+                    Se priorizó Bogotá D.C. sobre el resto de Cundinamarca dado que los municipios del departamento no cuentan con datasets
+                    equivalentes de acceso público, lo que habría comprometido la calidad y consistencia del análisis.
+                </p>
+            </div>
+        </div>
+
+        <!-- Acordeón Herramientas -->
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>🛠️ Herramientas utilizadas</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+
+                <h3>Procesamiento y análisis de datos</h3>
+                <ul>
+                    <li><strong>Python 3.x</strong> — Lenguaje principal del proyecto</li>
+                    <li><strong>Pandas</strong> — Manipulación y exploración de datos</li>
+                    <li><strong>NumPy</strong> — Operaciones numéricas</li>
+                    <li><strong>Scikit-learn</strong> — Modelos de clustering y análisis</li>
+                    <li><strong>Matplotlib / Seaborn</strong> — Visualización de datos</li>
+                    <li><strong>Apache Spark</strong> — Procesamiento distribuido y entrenamiento de modelos</li>
+                </ul>
+
+                <h3>Herramientas visuales y de inteligencia de negocios</h3>
+                <ul>
+                    <li><strong>Orange</strong> — Minería de datos visual mediante flujos de widgets</li>
+                    <li><strong>Power BI</strong> — Dashboard con KPIs, gráficos interactivos y filtros</li>
+                </ul>
+
+                <h3>Fuente de datos</h3>
+                <ul>
+                    <li><strong>Datos Abiertos Bogotá</strong> — Portal de datos del Distrito Capital</li>
+                    <li><strong>Secretaría Distrital de Salud</strong> — Entidad publicadora de los datasets utilizados</li>
+                </ul>
+
+                <h3>Bitácora y presentación</h3>
+                <ul>
+                    <li><strong>Flask</strong> — Framework web para la bitácora del proyecto</li>
+                    <li><strong>Git / GitHub</strong> — Control de versiones y colaboración en equipo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>Proyecto desarrollado para la materia de Minería de Datos</p>
+    </footer>
+{% endblock %}

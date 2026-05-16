@@ -1,29 +1,27 @@
-/* Variables globales */
+/* ============================================
+   VARIABLES GLOBALES
+   ============================================ */
 :root {
-    --primary-color: #2A9D8F;      
-    --secondary-color: #3D5A80;    
-    --accent-color: #E76F51;       
-    --success-color: #2A9D8F;      
-    --warning-color: #E9C46A;      
-    
-    /* Fondos y superficies */
+    --primary-color: #2A9D8F;
+    --secondary-color: #3D5A80;
+    --accent-color: #E76F51;
+    --success-color: #2A9D8F;
+    --warning-color: #E9C46A;
+
     --dark-bg: #293241;
-    --light-bg: #F4F9F9;           
-    --card-bg: #FFFFFF;            
-    --border-color: #E2E8F0;       
-    --code-bg: #EDF2F7;            
-    
-    /* Textos */
-    --text-dark: #2D3E50;          
-    --text-light: #5C6B7A;         
-    
-    /* Gradientes para fondos generales y header */
+    --light-bg: #F4F9F9;
+    --card-bg: #FFFFFF;
+    --border-color: #E2E8F0;
+    --code-bg: #EDF2F7;
+
+    --text-dark: #2D3E50;
+    --text-light: #5C6B7A;
+
     --body-gradient-start: #E6F7F5;
     --body-gradient-end: #C8E8E1;
     --header-gradient-start: #2A9D8F;
     --header-gradient-end: #3D5A80;
-    
-    /* Efectos */
+
     --border-radius: 8px;
     --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -40,23 +38,26 @@ body {
     color: var(--text-dark);
     background: linear-gradient(135deg, var(--body-gradient-start) 0%, var(--body-gradient-end) 100%);
     padding: 20px;
+    min-height: 100vh;
 }
 
-/* Contenedor principal */
-body > * {
-    max-width: 1200px;
-    margin: 0 auto;
+/* ============================================
+   ESTILOS PARA LA PÁGINA DE DESCRIPCIÓN
+   Mantienen el aspecto original con fondo blanco
+   ============================================ */
+#introduccion, #objetivos, #dataset, #fases, #herramientas {
     background: var(--card-bg);
-    padding: 30px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 40px;
+    padding: 20px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 }
 
-header, main, footer {
-    margin-bottom: 20px;
+#introduccion {
+    background: var(--light-bg);
 }
 
-/* Header */
 header {
     background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
     color: white;
@@ -69,7 +70,6 @@ header {
 header h1 {
     font-size: 2em;
     margin-bottom: 15px;
-    font-weight: 700;
 }
 
 header p {
@@ -91,17 +91,11 @@ header li {
     background: rgba(255, 255, 255, 0.2);
     padding: 8px 16px;
     border-radius: 20px;
-    font-size: 0.95em;
 }
 
-/* Secciones */
-section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-}
-
+/* ============================================
+   ESTILOS COMUNES (tablas, listas, etc.)
+   ============================================ */
 section h2 {
     color: var(--text-dark);
     border-bottom: 3px solid var(--secondary-color);
@@ -126,13 +120,11 @@ section h4 {
     padding-left: 12px;
 }
 
-/* Párrafos */
 p {
     margin-bottom: 15px;
     text-align: justify;
 }
 
-/* Listas */
 ul, ol {
     margin: 15px 0;
     padding-left: 30px;
@@ -151,7 +143,6 @@ code {
     color: var(--accent-color);
 }
 
-/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -178,7 +169,6 @@ tr:hover {
     background: var(--light-bg);
 }
 
-/* Enlaces */
 a {
     color: var(--secondary-color);
     text-decoration: none;
@@ -190,7 +180,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Artículos */
 article {
     background: var(--light-bg);
     padding: 20px;
@@ -204,72 +193,7 @@ article h3 {
     color: var(--text-dark);
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: var(--primary-color);
-    color: white;
-    border-radius: var(--border-radius);
-    margin-top: 30px;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    header h1 {
-        font-size: 1.5em;
-    }
-
-    header ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    section, article {
-        padding: 15px;
-    }
-
-    table {
-        font-size: 0.85em;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-}
-
-/* Sección objetivos */
-#objetivos {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-}
-
-/* Estilo para IDs específicos */
-#introduccion {
-    background: var(--light-bg);
-    border: 1px solid var(--border-color);
-}
-
-#dataset {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-}
-
-#fases {
-    background: var(--light-bg);
-    border: 1px solid var(--border-color);
-}
-
-#herramientas {
-    background: var(--light-bg);
-    border: 1px solid var(--border-color);
-}
-
-/* Botones flotantes para navegación */
+/* Botones flotantes, tooltips, etc. (sin cambios) */
 .nav-buttons {
     position: fixed;
     bottom: 20px;
@@ -298,7 +222,6 @@ footer {
     transform: scale(1.1);
 }
 
-/* Tooltips para las variables */
 [data-tooltip] {
     position: relative;
     cursor: help;
@@ -324,11 +247,9 @@ footer {
     display: block;
 }
 
-/* ============================================ */
-/* ESTILOS ESPECÍFICOS PARA EL DASHBOARD        */
-/* ============================================ */
-
-/* Contenedor del dashboard */
+/* ============================================
+   ESTILOS PARA EL DASHBOARD
+   ============================================ */
 .dashboard-container {
     background: var(--card-bg);
     padding: 20px;
@@ -337,12 +258,11 @@ footer {
     margin-bottom: 30px;
 }
 
-/* Wrapper responsivo para iframe de Power BI */
 .iframe-wrapper {
     position: relative;
     overflow: hidden;
     width: 100%;
-    padding-top: 56.25%; /* Relación de aspecto 16:9 */
+    padding-top: 56.25%;
     margin: 20px 0;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -357,7 +277,6 @@ footer {
     border: none;
 }
 
-/* Grid de hallazgos */
 .hallazgos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -365,7 +284,6 @@ footer {
     margin-top: 20px;
 }
 
-/* Tarjetas individuales de hallazgos */
 .hallazgo-card {
     background: var(--light-bg);
     border-left: 4px solid var(--primary-color);
@@ -392,7 +310,6 @@ footer {
     text-align: left;
 }
 
-/* Números destacados en los hallazgos */
 .numero-destacado {
     font-size: 1.8em;
     font-weight: bold;
@@ -401,7 +318,6 @@ footer {
     margin-right: 5px;
 }
 
-/* Badges o etiquetas */
 .badge {
     background: var(--primary-color);
     color: white;
@@ -412,7 +328,6 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Botón de navegación hacia atrás */
 .nav-back {
     display: inline-block;
     background: var(--secondary-color);
@@ -431,35 +346,279 @@ footer {
     transform: scale(1.02);
 }
 
-/* Responsive para dashboard */
+/* ============================================
+   ESTILOS EXCLUSIVOS PARA LA HOME
+   Banner, tarjetas de fases y acordeones
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: transparent;
+    padding: 0;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: var(--border-radius);
+    padding: 48px 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: var(--box-shadow);
+}
+
+.hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    font-size: 1rem;
+}
+
+.team span i {
+    margin-right: 8px;
+}
+
+.phases-section {
+    margin: 48px 0;
+}
+
+.phases-section h2 {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.phases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.phase-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.phase-card:not(.disabled):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.phase-card.disabled {
+    opacity: 0.65;
+    filter: grayscale(0.1);
+    background: #f9f9f9;
+    pointer-events: none;
+}
+
+.phase-number {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+}
+
+.phase-card h3 {
+    font-size: 1.4rem;
+    margin: 16px 0 12px;
+    color: var(--text-dark);
+}
+
+.phase-card p {
+    color: var(--text-light);
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+}
+
+.phase-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+}
+
+.phase-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.phase-btn.active:hover {
+    background-color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.phase-btn.disabled, .phase-btn.inactive {
+    background-color: #cbd5e1;
+    color: #475569;
+    cursor: not-allowed;
+}
+
+.info-section {
+    margin: 56px 0 48px;
+}
+
+.info-section h2 {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.accordion {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    background: var(--card-bg);
+    padding: 18px 24px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dark);
+    transition: background 0.2s;
+}
+
+.accordion-header:hover {
+    background: var(--light-bg);
+}
+
+.accordion-header i {
+    transition: transform 0.3s ease;
+    color: var(--primary-color);
+}
+
+.accordion-header.active i {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 24px;
+    background: var(--card-bg);
+    border-top: 1px solid transparent;
+}
+
+.accordion-content.open {
+    max-height: 2000px;
+    padding: 20px 24px 24px;
+    border-top-color: var(--border-color);
+}
+
+.accordion-content table {
+    width: 100%;
+    margin: 16px 0;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   FOOTER (único, centrado y con color secundario)
+   ============================================ */
+.footer {
+    text-align: center;
+    background: var(--secondary-color);
+    color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.footer p {
+    text-align: center;
+    margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .hero-banner {
+        padding: 32px 20px;
+    }
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    .team {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .phases-grid {
+        grid-template-columns: 1fr;
+    }
+    .accordion-header {
+        font-size: 1rem;
+        padding: 14px 18px;
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    header ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    section, article {
+        padding: 15px;
+    }
+    table {
+        font-size: 0.85em;
+    }
+    th, td {
+        padding: 8px;
+    }
     .hallazgos-grid {
         grid-template-columns: 1fr;
     }
-    
     .iframe-wrapper {
-        padding-top: 75%; /* Relación más alta para móviles */
+        padding-top: 75%;
     }
-    
     .numero-destacado {
         font-size: 1.4em;
     }
-    
-    .hallazgo-card h3 {
-        font-size: 1.1em;
-    }
-    
-    .dashboard-container {
-        padding: 15px;
-    }
 }
 
-/* Ajuste para pantallas muy pequeñas */
 @media (max-width: 480px) {
     .hallazgo-card {
         padding: 15px;
     }
-    
     .badge {
         font-size: 0.75em;
     }

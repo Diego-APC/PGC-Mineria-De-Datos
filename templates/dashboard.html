@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Bienestar Animal en Bogotá</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-  <header>
-    <h1>Dashboard de Bienestar Animal</h1>
-    <p>Visualización interactiva del estado de las mascotas en Bogotá</p>
-    <ul>
-      <li>Power BI Embedded</li>
-      <li>Análisis de tenencia responsable</li>
-      <li>Indicadores de salud pública</li>
-    </ul>
+{% block title %}Dashboard - Bienestar Animal Bogotá{% endblock %}
+
+{% block content %}
+
+  <header class="hero-banner">
+    <div class="hero-content">
+      <h1>Dashboard de Bienestar Animal</h1>
+      <p class="subtitle"> Visualización interactiva del estado de las mascotas en Bogotá</p>
+      <ul>
+        <li>Power BI Embedded</li>
+        <li>Análisis de tenencia responsable</li>
+        <li>Indicadores de salud pública</li>
+      </ul>
+    </div>
   </header>
 
   <main>
     <!-- Botón para volver al proyecto principal -->
-    <a href="/PGC/" class="nav-back">← Volver al proyecto</a>
+    <a href="/" class="nav-back">← Volver al inicio</a>
 
     <section id="dashboard">
       <h2>Dashboard</h2>
@@ -164,10 +162,9 @@
     </section>
 
   </main>
-  <footer>
+  <footer class="footer">
     <p>Dashboard desarrollado con Power BI - Datos oficiales de bienestar animal en Bogotá</p>
     <p><small>Fuente: Secretaría Distrital de Salud - Instituto de Protección y Bienestar Animal</small></p>
   </footer>
 
-</body>
-</html>
+{% endblock %}
