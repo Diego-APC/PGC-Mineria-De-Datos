@@ -414,6 +414,9 @@ article h3 {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;  
 }
 
 .phase-card:not(.disabled):hover {
@@ -449,6 +452,8 @@ article h3 {
     color: var(--text-light);
     margin-bottom: 24px;
     font-size: 0.9rem;
+    text-align: center; 
+    flex-grow: 1;
 }
 
 .phase-btn {
@@ -459,6 +464,8 @@ article h3 {
     font-weight: 600;
     transition: background 0.2s;
     font-size: 0.9rem;
+    margin-top: auto;     
+    align-self: center;
 }
 
 .phase-btn.active {

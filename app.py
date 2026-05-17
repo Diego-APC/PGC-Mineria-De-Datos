@@ -11,9 +11,9 @@ def home():
 def pgc():
      return render_template("DescripcionProyecto.html")
 
-@app.route("/fase1/")
-def fase1():
-     return render_template("fase1.html")
+@app.route("/fase2/")
+def fase2():
+     return render_template("fase2.html")
 
 @app.route("/dashboard/")
 def dashboard():
